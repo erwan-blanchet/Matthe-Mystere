@@ -1,0 +1,1970 @@
+[gd_scene load_steps=25 format=3 uid="uid://c18qqolgrgabh"]
+
+[ext_resource type="Script" path="res://Scripts/Parcours/Soustraction.gd" id="1_0u3vh"]
+[ext_resource type="Theme" uid="uid://bqjsekvowtvs5" path="res://Themes/Parcours/panel.tres" id="2_6c508"]
+[ext_resource type="Theme" uid="uid://da3dpnk6xm3fg" path="res://Themes/Parcours/niveau_en_cours.tres" id="3_1vbmj"]
+[ext_resource type="Theme" uid="uid://dhpkpga1qd32b" path="res://Themes/Parcours/niveau_non_accessible.tres" id="4_ukpcy"]
+[ext_resource type="Texture2D" uid="uid://ctinbnc47cgce" path="res://Images/Parcours/accueil_parcours.png" id="5_8krm6"]
+[ext_resource type="Texture2D" uid="uid://qk4nm0rr1l2q" path="res://Images/Parcours/coffre_ferme.png" id="6_ixj46"]
+[ext_resource type="SystemFont" uid="uid://d1khr5p4wim2t" path="res://Themes/police_d_ecriture.tres" id="7_tjha4"]
+[ext_resource type="Theme" uid="uid://cjmh2435o0gy7" path="res://Themes/Cours/contenu_cours.tres" id="8_3m5ip"]
+[ext_resource type="Theme" uid="uid://7o0kntx0sw2k" path="res://Themes/Parcours/boutons.tres" id="9_jf5gh"]
+[ext_resource type="Theme" uid="uid://lwtmr2wflkds" path="res://Themes/Parcours/niveau_reussit.tres" id="10_tw565"]
+[ext_resource type="Texture2D" uid="uid://cb17pykw3d4xx" path="res://Images/Parcours/personnage_niveau1.png" id="11_4h185"]
+[ext_resource type="Theme" uid="uid://bwipronsmd40d" path="res://Themes/Parcours/enonce.tres" id="12_1i43k"]
+[ext_resource type="Theme" uid="uid://dv8bk6cfklbq1" path="res://Themes/Parcours/proposition_CheckBox.tres" id="13_yqv62"]
+[ext_resource type="Texture2D" uid="uid://dxnuqyhhvgqhp" path="res://Images/Parcours/reponse_incorrecte.png" id="14_gttkl"]
+[ext_resource type="Texture2D" uid="uid://c5wb0knf5j4en" path="res://Images/Parcours/reponse_correcte.png" id="15_gat5o"]
+[ext_resource type="Texture2D" uid="uid://dstlmqm4326et" path="res://Images/Parcours/personnage_niveau2.png" id="16_54sir"]
+[ext_resource type="Theme" uid="uid://dy81ui067mcoh" path="res://Themes/Parcours/reponse_saisit.tres" id="17_8qk7f"]
+[ext_resource type="Texture2D" uid="uid://b1sgs4ygs1jqp" path="res://Images/Parcours/personnage_niveau3.png" id="17_k7t47"]
+[ext_resource type="Texture2D" uid="uid://batdigw7vn3pg" path="res://Images/Parcours/personnage_niveau4.png" id="18_0v3lk"]
+[ext_resource type="Texture2D" uid="uid://b0jypxg1erady" path="res://Images/Parcours/personnage_niveau5.png" id="20_0mn8b"]
+[ext_resource type="Texture2D" uid="uid://bould2hdlf0i1" path="res://Images/Parcours/coffre_ouvert.png" id="21_8xibu"]
+[ext_resource type="Texture2D" uid="uid://b2ec21pflo05h" path="res://Images/Parcours/fin_parcours.png" id="22_p81r4"]
+[ext_resource type="Theme" uid="uid://bg6em5o6n8isn" path="res://Themes/Parcours/bouton_proposition_niveau3.tres" id="23_ahae0"]
+
+[sub_resource type="Theme" id="Theme_icsqd"]
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/font_sizes/bold_font_size = 50
+RichTextLabel/font_sizes/bold_italics_font_size = 50
+RichTextLabel/font_sizes/italics_font_size = 50
+RichTextLabel/font_sizes/mono_font_size = 50
+RichTextLabel/font_sizes/normal_font_size = 50
+RichTextLabel/fonts/bold_font = ExtResource("7_tjha4")
+RichTextLabel/fonts/bold_italics_font = ExtResource("7_tjha4")
+RichTextLabel/fonts/italics_font = ExtResource("7_tjha4")
+RichTextLabel/fonts/mono_font = ExtResource("7_tjha4")
+RichTextLabel/fonts/normal_font = ExtResource("7_tjha4")
+
+[node name="Soustraction" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0u3vh")
+
+[node name="Fond" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.996078, 0.839216, 0.462745, 1)
+
+[node name="Marges" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="PanelAccueil" type="Panel" parent="Marges"]
+clip_contents = true
+layout_direction = 1
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="btnCours" type="Button" parent="Marges/PanelAccueil"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -364.0
+offset_top = -12.0
+offset_right = -264.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_1vbmj")
+
+[node name="btnNiveau1" type="Button" parent="Marges/PanelAccueil"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -126.0
+offset_right = -160.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_ukpcy")
+disabled = true
+
+[node name="btnNiveau2" type="Button" parent="Marges/PanelAccueil"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -234.0
+offset_right = -46.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ukpcy")
+disabled = true
+
+[node name="btnNiveau3" type="Button" parent="Marges/PanelAccueil"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -281.0
+offset_right = 99.0
+offset_bottom = -181.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ukpcy")
+disabled = true
+
+[node name="btnNiveau4" type="Button" parent="Marges/PanelAccueil"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 153.0
+offset_top = -221.0
+offset_right = 253.0
+offset_bottom = -121.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ukpcy")
+disabled = true
+
+[node name="btnNiveau5" type="Button" parent="Marges/PanelAccueil"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 278.0
+offset_top = -117.0
+offset_right = 378.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ukpcy")
+disabled = true
+
+[node name="CoffreFerme" type="TextureRect" parent="Marges/PanelAccueil"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 250.0
+offset_top = -48.0
+offset_right = 586.0
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ixj46")
+expand_mode = 2
+
+[node name="AccueilParcours" type="TextureRect" parent="Marges/PanelAccueil"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -517.0
+offset_top = 107.0
+offset_right = -156.0
+offset_bottom = 315.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_8krm6")
+expand_mode = 1
+
+[node name="PanelCheminCoursValide" type="Panel" parent="Marges"]
+visible = false
+clip_contents = true
+layout_direction = 1
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="btnCours" type="Button" parent="Marges/PanelCheminCoursValide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -495.0
+offset_top = 153.0
+offset_right = -395.0
+offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau1" type="Button" parent="Marges/PanelCheminCoursValide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -363.0
+offset_top = -13.0
+offset_right = -263.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_1vbmj")
+
+[node name="btnNiveau2" type="Button" parent="Marges/PanelCheminCoursValide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -229.0
+offset_top = -173.0
+offset_right = -129.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ukpcy")
+disabled = true
+
+[node name="btnNiveau3" type="Button" parent="Marges/PanelCheminCoursValide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -233.0
+offset_right = 49.0
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ukpcy")
+disabled = true
+
+[node name="btnNiveau4" type="Button" parent="Marges/PanelCheminCoursValide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 117.0
+offset_top = -182.0
+offset_right = 217.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ukpcy")
+disabled = true
+
+[node name="btnNiveau5" type="Button" parent="Marges/PanelCheminCoursValide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 302.0
+offset_top = -38.0
+offset_right = 402.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ukpcy")
+disabled = true
+
+[node name="CoffreFerme" type="TextureRect" parent="Marges/PanelCheminCoursValide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 255.0
+offset_top = 34.0
+offset_right = 591.0
+offset_bottom = 314.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ixj46")
+expand_mode = 2
+
+[node name="Personnage" type="TextureRect" parent="Marges/PanelCheminCoursValide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -391.0
+offset_top = -196.0
+offset_right = -250.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("11_4h185")
+expand_mode = 1
+
+[node name="PanelCheminNiveau1Valide" type="Panel" parent="Marges"]
+visible = false
+clip_contents = true
+layout_direction = 1
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="btnCours" type="Button" parent="Marges/PanelCheminNiveau1Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -495.0
+offset_top = 153.0
+offset_right = -395.0
+offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau1" type="Button" parent="Marges/PanelCheminNiveau1Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -363.0
+offset_top = -13.0
+offset_right = -263.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau2" type="Button" parent="Marges/PanelCheminNiveau1Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -229.0
+offset_top = -173.0
+offset_right = -129.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_1vbmj")
+
+[node name="btnNiveau3" type="Button" parent="Marges/PanelCheminNiveau1Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -233.0
+offset_right = 49.0
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ukpcy")
+disabled = true
+
+[node name="btnNiveau4" type="Button" parent="Marges/PanelCheminNiveau1Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 117.0
+offset_top = -182.0
+offset_right = 217.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ukpcy")
+disabled = true
+
+[node name="btnNiveau5" type="Button" parent="Marges/PanelCheminNiveau1Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 302.0
+offset_top = -38.0
+offset_right = 402.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ukpcy")
+disabled = true
+
+[node name="CoffreFerme" type="TextureRect" parent="Marges/PanelCheminNiveau1Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 255.0
+offset_top = 34.0
+offset_right = 591.0
+offset_bottom = 314.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ixj46")
+expand_mode = 2
+
+[node name="Personnage" type="TextureRect" parent="Marges/PanelCheminNiveau1Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -317.0
+offset_top = -307.0
+offset_right = -128.0
+offset_bottom = -117.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_54sir")
+expand_mode = 1
+
+[node name="PanelCheminNiveau2Valide" type="Panel" parent="Marges"]
+visible = false
+clip_contents = true
+layout_direction = 1
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="btnCours" type="Button" parent="Marges/PanelCheminNiveau2Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -495.0
+offset_top = 153.0
+offset_right = -395.0
+offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau1" type="Button" parent="Marges/PanelCheminNiveau2Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -363.0
+offset_top = -13.0
+offset_right = -263.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau2" type="Button" parent="Marges/PanelCheminNiveau2Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -229.0
+offset_top = -173.0
+offset_right = -129.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau3" type="Button" parent="Marges/PanelCheminNiveau2Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -233.0
+offset_right = 49.0
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_1vbmj")
+
+[node name="btnNiveau4" type="Button" parent="Marges/PanelCheminNiveau2Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 117.0
+offset_top = -182.0
+offset_right = 217.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ukpcy")
+disabled = true
+
+[node name="btnNiveau5" type="Button" parent="Marges/PanelCheminNiveau2Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 302.0
+offset_top = -38.0
+offset_right = 402.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ukpcy")
+disabled = true
+
+[node name="CoffreFerme" type="TextureRect" parent="Marges/PanelCheminNiveau2Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 255.0
+offset_top = 34.0
+offset_right = 591.0
+offset_bottom = 314.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ixj46")
+expand_mode = 2
+
+[node name="Personnage" type="TextureRect" parent="Marges/PanelCheminNiveau2Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -260.0
+offset_right = 75.0
+offset_bottom = -183.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("17_k7t47")
+expand_mode = 1
+
+[node name="PanelCheminNiveau3Valide" type="Panel" parent="Marges"]
+visible = false
+clip_contents = true
+layout_direction = 1
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="btnCours" type="Button" parent="Marges/PanelCheminNiveau3Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -495.0
+offset_top = 153.0
+offset_right = -395.0
+offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau1" type="Button" parent="Marges/PanelCheminNiveau3Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -363.0
+offset_top = -13.0
+offset_right = -263.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau2" type="Button" parent="Marges/PanelCheminNiveau3Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -229.0
+offset_top = -173.0
+offset_right = -129.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau3" type="Button" parent="Marges/PanelCheminNiveau3Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -233.0
+offset_right = 49.0
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau4" type="Button" parent="Marges/PanelCheminNiveau3Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 117.0
+offset_top = -182.0
+offset_right = 217.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_1vbmj")
+
+[node name="btnNiveau5" type="Button" parent="Marges/PanelCheminNiveau3Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 302.0
+offset_top = -38.0
+offset_right = 402.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ukpcy")
+disabled = true
+
+[node name="CoffreFerme" type="TextureRect" parent="Marges/PanelCheminNiveau3Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 255.0
+offset_top = 34.0
+offset_right = 591.0
+offset_bottom = 314.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ixj46")
+expand_mode = 2
+
+[node name="Personnage" type="TextureRect" parent="Marges/PanelCheminNiveau3Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 97.0
+offset_top = -300.0
+offset_right = 227.0
+offset_bottom = -198.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("18_0v3lk")
+expand_mode = 1
+
+[node name="PanelCheminNiveau4Valide" type="Panel" parent="Marges"]
+visible = false
+clip_contents = true
+layout_direction = 1
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="btnCours" type="Button" parent="Marges/PanelCheminNiveau4Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -495.0
+offset_top = 153.0
+offset_right = -395.0
+offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau1" type="Button" parent="Marges/PanelCheminNiveau4Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -363.0
+offset_top = -13.0
+offset_right = -263.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau2" type="Button" parent="Marges/PanelCheminNiveau4Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -229.0
+offset_top = -173.0
+offset_right = -129.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau3" type="Button" parent="Marges/PanelCheminNiveau4Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -233.0
+offset_right = 49.0
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau4" type="Button" parent="Marges/PanelCheminNiveau4Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 117.0
+offset_top = -182.0
+offset_right = 217.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau5" type="Button" parent="Marges/PanelCheminNiveau4Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 302.0
+offset_top = -38.0
+offset_right = 402.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_tw565")
+
+[node name="CoffreFerme" type="TextureRect" parent="Marges/PanelCheminNiveau4Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 255.0
+offset_top = 34.0
+offset_right = 591.0
+offset_bottom = 314.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ixj46")
+expand_mode = 2
+
+[node name="Personnage" type="TextureRect" parent="Marges/PanelCheminNiveau4Valide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 326.0
+offset_top = -153.0
+offset_right = 432.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("20_0mn8b")
+expand_mode = 1
+
+[node name="PanelCheminTermine" type="Panel" parent="Marges"]
+visible = false
+clip_contents = true
+layout_direction = 1
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="btnCours" type="Button" parent="Marges/PanelCheminTermine"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -495.0
+offset_top = 153.0
+offset_right = -395.0
+offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau1" type="Button" parent="Marges/PanelCheminTermine"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -363.0
+offset_top = -13.0
+offset_right = -263.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau2" type="Button" parent="Marges/PanelCheminTermine"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -229.0
+offset_top = -173.0
+offset_right = -129.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau3" type="Button" parent="Marges/PanelCheminTermine"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -233.0
+offset_right = 49.0
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau4" type="Button" parent="Marges/PanelCheminTermine"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 117.0
+offset_top = -182.0
+offset_right = 217.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_tw565")
+
+[node name="btnNiveau5" type="Button" parent="Marges/PanelCheminTermine"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 302.0
+offset_top = -38.0
+offset_right = 402.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_tw565")
+
+[node name="CoffreOuvert" type="TextureRect" parent="Marges/PanelCheminTermine"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 255.0
+offset_top = 34.0
+offset_right = 591.0
+offset_bottom = 314.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_8xibu")
+expand_mode = 2
+
+[node name="Personnage" type="TextureRect" parent="Marges/PanelCheminTermine"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -215.0
+offset_top = -239.0
+offset_right = 215.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("22_p81r4")
+expand_mode = 1
+
+[node name="btnRecommencer" type="Button" parent="Marges/PanelCheminTermine"]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 17.0
+offset_right = 380.0
+offset_bottom = 92.0
+theme = ExtResource("9_jf5gh")
+text = "Recommencer l'aventure !"
+
+[node name="PanelCours" type="Panel" parent="Marges"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="ConteneurCours" type="VBoxContainer" parent="Marges/PanelCours"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = -10.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="titreCours" type="RichTextLabel" parent="Marges/PanelCours/ConteneurCours"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme = SubResource("Theme_icsqd")
+bbcode_enabled = true
+text = "A p p r e n o n s  l e s  s o u s t r a c t i o n s  !"
+
+[node name="cours" type="RichTextLabel" parent="Marges/PanelCours/ConteneurCours"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("8_3m5ip")
+bbcode_enabled = true
+text = "[color=#0E00FF]L a  s o u s t r a c t i o n  e s t  u n e  f a ç o n   d e  p r e n d r e  d e s  c h o s e s  o u  d e s  n o m b r e s . [/color] [color=#137500] Q u a n d  n o u s  s o u s t r a y o n s ,  n o u s  e n l e v o  n s  q u e l q  u e  c h o s e  d ' u n  g r o u p e . [/color] [color=#FF0000]  P a r  e x e m p l e ,  s i  n o u s  a v o n s  5  p o m m e s  e t  q u e  n o u s  e n  p r e n  o n s  2 ,  i l  e n  r e s t e  3 . [/color] 
+
+[color=#0E00FF]E x e m p l e :[/color] 
+[color=#137500] I m a g i n e  q u e  t u  a s  5  b o n b o n s  e t  q u e  t u  e n  m a n g  e s  2 .  [/color] [color=#FF0000] C o m b i e n  d e  b o n b o n s  t e  r e s t e n t  - i l  ? [/color] [color=#0E00FF] 5  b o n b o n s [/color] [color=#137500]  -  [/color] [color=#FF0000] 2 b o n b o n s  [/color] [color=#0E00FF] = [/color] [color=#137500] 3  b o n b o n s [/color] 
+[color=#FF0000]D o n c ,  i l  t e  r e s t e  3  b o n b o n s .[/color] 
+
+[color=#0E00FF] L a  s o u s t r a c t i o n  e s t  c o m m e   u n  j e u  o ù  n o u s  e n l e v o n s  d e s  c h o s e s  p o u r  v o i r  c o m b i e n  i l  e n  r e s t e . [/color]
+[color=#137500]E s - t u  p r ê t(e)   à  e s s a y e r  ?[/color] 
+
+"
+
+[node name="btnFinLecture" type="Button" parent="Marges/PanelCours"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -312.0
+offset_top = -57.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("9_jf5gh")
+text = "Je suis prêt(e)"
+
+[node name="PanelNiveau1" type="Panel" parent="Marges"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="Conteneur" type="VBoxContainer" parent="Marges/PanelNiveau1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = -37.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConteneurEnonce" type="HBoxContainer" parent="Marges/PanelNiveau1/Conteneur"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NombreAleatoire" type="RichTextLabel" parent="Marges/PanelNiveau1/Conteneur/ConteneurEnonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_1i43k")
+text = "nb"
+
+[node name="SigneSoustraction" type="RichTextLabel" parent="Marges/PanelNiveau1/Conteneur/ConteneurEnonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_1i43k")
+bbcode_enabled = true
+text = "[center]-[/center]"
+
+[node name="NombreAleatoire2" type="RichTextLabel" parent="Marges/PanelNiveau1/Conteneur/ConteneurEnonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_1i43k")
+text = "nb"
+
+[node name="SigneEgal" type="RichTextLabel" parent="Marges/PanelNiveau1/Conteneur/ConteneurEnonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_1i43k")
+bbcode_enabled = true
+text = "[center]=[/center]"
+
+[node name="ConteneurProposition" type="VBoxContainer" parent="Marges/PanelNiveau1/Conteneur"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Conteneur" type="HBoxContainer" parent="Marges/PanelNiveau1/Conteneur/ConteneurProposition"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Proposition1" type="CheckBox" parent="Marges/PanelNiveau1/Conteneur/ConteneurProposition/Conteneur"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_yqv62")
+text = "propositionA"
+
+[node name="Proposition2" type="CheckBox" parent="Marges/PanelNiveau1/Conteneur/ConteneurProposition/Conteneur"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_yqv62")
+text = " propositionB"
+
+[node name="Conteneur2" type="HBoxContainer" parent="Marges/PanelNiveau1/Conteneur/ConteneurProposition"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Proposition3" type="CheckBox" parent="Marges/PanelNiveau1/Conteneur/ConteneurProposition/Conteneur2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_yqv62")
+text = " propositionC"
+
+[node name="Proposition4" type="CheckBox" parent="Marges/PanelNiveau1/Conteneur/ConteneurProposition/Conteneur2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_yqv62")
+text = " propositionD"
+
+[node name="btnValider" type="Button" parent="Marges/PanelNiveau1/Conteneur"]
+layout_mode = 2
+theme = ExtResource("9_jf5gh")
+text = "Valider ma réponse"
+
+[node name="PanelMauvaiseReponseNiveau1" type="Panel" parent="Marges"]
+visible = false
+clip_contents = true
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Marges/PanelMauvaiseReponseNiveau1"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -561.5
+offset_right = 561.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titre" type="RichTextLabel" parent="Marges/PanelMauvaiseReponseNiveau1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 86
+bbcode_enabled = true
+text = "[center][color=#FF0000]D o m m a g e  ![/color][/center]
+"
+
+[node name="Explication" type="RichTextLabel" parent="Marges/PanelMauvaiseReponseNiveau1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Marges/PanelMauvaiseReponseNiveau1/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="btnRetenter" type="Button" parent="Marges/PanelMauvaiseReponseNiveau1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_jf5gh")
+text = "R e t e n t e r  m a  c h a n c e "
+
+[node name="Personnage" type="TextureRect" parent="Marges/PanelMauvaiseReponseNiveau1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("14_gttkl")
+
+[node name="btnChemin" type="Button" parent="Marges/PanelMauvaiseReponseNiveau1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_jf5gh")
+text = "R e t o u r n e r  a u  c h e m i n"
+
+[node name="PanelBonneReponseNiveau1" type="Panel" parent="Marges"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Marges/PanelBonneReponseNiveau1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titre" type="RichTextLabel" parent="Marges/PanelBonneReponseNiveau1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[center][color=#137500]F é l i c i t a t i o n !  [/color]
+[color=#0E00FF] R é p o n s e  c o r r e c t e ! [/color][/center]"
+
+[node name="ConteneurImage" type="HBoxContainer" parent="Marges/PanelBonneReponseNiveau1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EspaceVide2" type="Panel" parent="Marges/PanelBonneReponseNiveau1/VBoxContainer/ConteneurImage"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="morceauImage" type="TextureRect" parent="Marges/PanelBonneReponseNiveau1/VBoxContainer/ConteneurImage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EspaceVide3" type="Panel" parent="Marges/PanelBonneReponseNiveau1/VBoxContainer/ConteneurImage"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Marges/PanelBonneReponseNiveau1/VBoxContainer"]
+layout_mode = 2
+
+[node name="ReponseCorrecte" type="Sprite2D" parent="Marges/PanelBonneReponseNiveau1/VBoxContainer/HBoxContainer"]
+position = Vector2(994, -118)
+scale = Vector2(0.782468, 0.856796)
+texture = ExtResource("15_gat5o")
+
+[node name="EspaceVide" type="Panel" parent="Marges/PanelBonneReponseNiveau1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="btnSuivant" type="Button" parent="Marges/PanelBonneReponseNiveau1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_jf5gh")
+text = "S u i v a n t"
+
+[node name="PanelNiveau2" type="Panel" parent="Marges"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Marges/PanelNiveau2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EspaceVide" type="Panel" parent="Marges/PanelNiveau2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ConteneurEnonce" type="HBoxContainer" parent="Marges/PanelNiveau2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="nbAleatoire1" type="RichTextLabel" parent="Marges/PanelNiveau2/VBoxContainer/ConteneurEnonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_1i43k")
+bbcode_enabled = true
+text = "[center]nb[/center]"
+
+[node name="Signe" type="RichTextLabel" parent="Marges/PanelNiveau2/VBoxContainer/ConteneurEnonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_1i43k")
+bbcode_enabled = true
+text = "[center]-[/center]"
+
+[node name="nbAleatoire2" type="RichTextLabel" parent="Marges/PanelNiveau2/VBoxContainer/ConteneurEnonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_1i43k")
+bbcode_enabled = true
+text = "[center]nb[/center]"
+
+[node name="SigneEgal" type="RichTextLabel" parent="Marges/PanelNiveau2/VBoxContainer/ConteneurEnonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_1i43k")
+bbcode_enabled = true
+text = "[center]=[/center]"
+
+[node name="ReponseSaisit" type="TextEdit" parent="Marges/PanelNiveau2/VBoxContainer/ConteneurEnonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("17_8qk7f")
+
+[node name="btnValider" type="Button" parent="Marges/PanelNiveau2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_jf5gh")
+text = "V a l i d e r  m a  r é p o n s e "
+
+[node name="PanelMauvaiseReponseNiveau2" type="Panel" parent="Marges"]
+visible = false
+clip_contents = true
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Marges/PanelMauvaiseReponseNiveau2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titre" type="RichTextLabel" parent="Marges/PanelMauvaiseReponseNiveau2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 86
+bbcode_enabled = true
+text = "[center][color=#FF0000]D o m m a g e  ![/color][/center]
+"
+
+[node name="Explication" type="RichTextLabel" parent="Marges/PanelMauvaiseReponseNiveau2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Marges/PanelMauvaiseReponseNiveau2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="btnRetenter" type="Button" parent="Marges/PanelMauvaiseReponseNiveau2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_jf5gh")
+text = "R e t e n t e r  m a  c h a n c e "
+
+[node name="Personnage" type="TextureRect" parent="Marges/PanelMauvaiseReponseNiveau2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("14_gttkl")
+
+[node name="btnChemin" type="Button" parent="Marges/PanelMauvaiseReponseNiveau2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_jf5gh")
+text = "R e t o u r n e r  a u  c h e m i n"
+
+[node name="PanelBonneReponseNiveau2" type="Panel" parent="Marges"]
+visible = false
+clip_contents = true
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Marges/PanelBonneReponseNiveau2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titre" type="RichTextLabel" parent="Marges/PanelBonneReponseNiveau2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[center][color=#137500]F é l i c i t a t i o n !  [/color]
+[color=#0E00FF] R é p o n s e  c o r r e c t e ! [/color][/center]"
+
+[node name="ConteneurImage" type="HBoxContainer" parent="Marges/PanelBonneReponseNiveau2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EspaceVide2" type="Panel" parent="Marges/PanelBonneReponseNiveau2/VBoxContainer/ConteneurImage"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="morceauImage" type="TextureRect" parent="Marges/PanelBonneReponseNiveau2/VBoxContainer/ConteneurImage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EspaceVide3" type="Panel" parent="Marges/PanelBonneReponseNiveau2/VBoxContainer/ConteneurImage"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Marges/PanelBonneReponseNiveau2/VBoxContainer"]
+layout_mode = 2
+
+[node name="ReponseCorrecte" type="Sprite2D" parent="Marges/PanelBonneReponseNiveau2/VBoxContainer/HBoxContainer"]
+position = Vector2(994, -118)
+scale = Vector2(0.782468, 0.856796)
+texture = ExtResource("15_gat5o")
+
+[node name="EspaceVide" type="Panel" parent="Marges/PanelBonneReponseNiveau2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="btnSuivant" type="Button" parent="Marges/PanelBonneReponseNiveau2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_jf5gh")
+text = "S u i v a n t"
+
+[node name="PanelNiveau3" type="Panel" parent="Marges"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Marges/PanelNiveau3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EspaceVide" type="Panel" parent="Marges/PanelNiveau3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+
+[node name="Enonce" type="HBoxContainer" parent="Marges/PanelNiveau3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="nbAleatoire1" type="RichTextLabel" parent="Marges/PanelNiveau3/VBoxContainer/Enonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_1i43k")
+bbcode_enabled = true
+text = "[center]nb[/center]"
+
+[node name="Signe" type="RichTextLabel" parent="Marges/PanelNiveau3/VBoxContainer/Enonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_1i43k")
+bbcode_enabled = true
+text = "[center]-[/center]"
+
+[node name="ReponseUtilisateur" type="Label" parent="Marges/PanelNiveau3/VBoxContainer/Enonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_tjha4")
+theme_override_font_sizes/font_size = 104
+text = "test"
+horizontal_alignment = 1
+
+[node name="SigneEgal" type="RichTextLabel" parent="Marges/PanelNiveau3/VBoxContainer/Enonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_1i43k")
+bbcode_enabled = true
+text = "[center]=[/center]"
+
+[node name="nbAleatoireResultat" type="RichTextLabel" parent="Marges/PanelNiveau3/VBoxContainer/Enonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_1i43k")
+bbcode_enabled = true
+text = "[center]nb[/center]"
+
+[node name="Propositions" type="HBoxContainer" parent="Marges/PanelNiveau3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Conteneur" type="VBoxContainer" parent="Marges/PanelNiveau3/VBoxContainer/Propositions"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="proposition1" type="Button" parent="Marges/PanelNiveau3/VBoxContainer/Propositions/Conteneur"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("23_ahae0")
+text = "nb"
+
+[node name="proposition2" type="Button" parent="Marges/PanelNiveau3/VBoxContainer/Propositions/Conteneur"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("23_ahae0")
+text = "nbbbb"
+
+[node name="Conteneur2" type="VBoxContainer" parent="Marges/PanelNiveau3/VBoxContainer/Propositions"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="proposition3" type="Button" parent="Marges/PanelNiveau3/VBoxContainer/Propositions/Conteneur2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("23_ahae0")
+text = "nbbb"
+
+[node name="proposition4" type="Button" parent="Marges/PanelNiveau3/VBoxContainer/Propositions/Conteneur2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("23_ahae0")
+text = "nbb"
+
+[node name="btnValider" type="Button" parent="Marges/PanelNiveau3/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_jf5gh")
+text = "V a l i d e r  m a  r é p o n s e "
+
+[node name="PanelMauvaiseReponseNiveau3" type="Panel" parent="Marges"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Marges/PanelMauvaiseReponseNiveau3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titre" type="RichTextLabel" parent="Marges/PanelMauvaiseReponseNiveau3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 86
+bbcode_enabled = true
+text = "[center][color=#FF0000]D o m m a g e  ![/color][/center]
+"
+
+[node name="Explication" type="RichTextLabel" parent="Marges/PanelMauvaiseReponseNiveau3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Marges/PanelMauvaiseReponseNiveau3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="btnRetenter" type="Button" parent="Marges/PanelMauvaiseReponseNiveau3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_jf5gh")
+text = "R e t e n t e r  m a  c h a n c e "
+
+[node name="Personnage" type="TextureRect" parent="Marges/PanelMauvaiseReponseNiveau3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("14_gttkl")
+
+[node name="btnChemin" type="Button" parent="Marges/PanelMauvaiseReponseNiveau3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_jf5gh")
+text = "R e t o u r n e r  a u  c h e m i n"
+
+[node name="PanelBonneReponseNiveau3" type="Panel" parent="Marges"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Marges/PanelBonneReponseNiveau3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titre" type="RichTextLabel" parent="Marges/PanelBonneReponseNiveau3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[center][color=#137500]F é l i c i t a t i o n !  [/color]
+[color=#0E00FF] R é p o n s e  c o r r e c t e ! [/color][/center]"
+
+[node name="ConteneurImage" type="HBoxContainer" parent="Marges/PanelBonneReponseNiveau3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EspaceVide2" type="Panel" parent="Marges/PanelBonneReponseNiveau3/VBoxContainer/ConteneurImage"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="morceauImage" type="TextureRect" parent="Marges/PanelBonneReponseNiveau3/VBoxContainer/ConteneurImage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EspaceVide3" type="Panel" parent="Marges/PanelBonneReponseNiveau3/VBoxContainer/ConteneurImage"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Marges/PanelBonneReponseNiveau3/VBoxContainer"]
+layout_mode = 2
+
+[node name="ReponseCorrecte" type="Sprite2D" parent="Marges/PanelBonneReponseNiveau3/VBoxContainer/HBoxContainer"]
+position = Vector2(994, -118)
+scale = Vector2(0.782468, 0.856796)
+texture = ExtResource("15_gat5o")
+
+[node name="EspaceVide" type="Panel" parent="Marges/PanelBonneReponseNiveau3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="btnSuivant" type="Button" parent="Marges/PanelBonneReponseNiveau3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_jf5gh")
+text = "S u i v a n t"
+
+[node name="PanelNiveau4" type="Panel" parent="Marges"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="Conteneur" type="VBoxContainer" parent="Marges/PanelNiveau4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = -37.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EspaceVide" type="Panel" parent="Marges/PanelNiveau4/Conteneur"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+
+[node name="ConteneurEnonce" type="HBoxContainer" parent="Marges/PanelNiveau4/Conteneur"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NombreAleatoire" type="RichTextLabel" parent="Marges/PanelNiveau4/Conteneur/ConteneurEnonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_1i43k")
+bbcode_enabled = true
+text = "[center]nb[center]"
+
+[node name="SigneSoustraction" type="RichTextLabel" parent="Marges/PanelNiveau4/Conteneur/ConteneurEnonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_1i43k")
+bbcode_enabled = true
+text = "[center]-[/center]"
+
+[node name="ReponseSaisit" type="TextEdit" parent="Marges/PanelNiveau4/Conteneur/ConteneurEnonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("17_8qk7f")
+
+[node name="SigneEgal" type="RichTextLabel" parent="Marges/PanelNiveau4/Conteneur/ConteneurEnonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_1i43k")
+bbcode_enabled = true
+text = "[center]=[/center]"
+
+[node name="NombreAleatoire2" type="RichTextLabel" parent="Marges/PanelNiveau4/Conteneur/ConteneurEnonce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_1i43k")
+text = "nb"
+
+[node name="btnValider" type="Button" parent="Marges/PanelNiveau4/Conteneur"]
+layout_mode = 2
+theme = ExtResource("9_jf5gh")
+text = "Valider ma réponse"
+
+[node name="PanelMauvaiseReponseNiveau4" type="Panel" parent="Marges"]
+visible = false
+clip_contents = true
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Marges/PanelMauvaiseReponseNiveau4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titre" type="RichTextLabel" parent="Marges/PanelMauvaiseReponseNiveau4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 86
+bbcode_enabled = true
+text = "[center][color=#FF0000]D o m m a g e  ![/color][/center]
+"
+
+[node name="Explication" type="RichTextLabel" parent="Marges/PanelMauvaiseReponseNiveau4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Marges/PanelMauvaiseReponseNiveau4/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="btnRetenter" type="Button" parent="Marges/PanelMauvaiseReponseNiveau4/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_jf5gh")
+text = "R e t e n t e r  m a  c h a n c e "
+
+[node name="Personnage" type="TextureRect" parent="Marges/PanelMauvaiseReponseNiveau4/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("14_gttkl")
+
+[node name="btnChemin" type="Button" parent="Marges/PanelMauvaiseReponseNiveau4/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_jf5gh")
+text = "R e t o u r n e r  a u  c h e m i n"
+
+[node name="PanelBonneReponseNiveau4" type="Panel" parent="Marges"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Marges/PanelBonneReponseNiveau4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titre" type="RichTextLabel" parent="Marges/PanelBonneReponseNiveau4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[center][color=#137500]F é l i c i t a t i o n !  [/color]
+[color=#0E00FF] R é p o n s e  c o r r e c t e ! [/color][/center]"
+
+[node name="ConteneurImage" type="HBoxContainer" parent="Marges/PanelBonneReponseNiveau4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EspaceVide2" type="Panel" parent="Marges/PanelBonneReponseNiveau4/VBoxContainer/ConteneurImage"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="morceauImage" type="TextureRect" parent="Marges/PanelBonneReponseNiveau4/VBoxContainer/ConteneurImage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EspaceVide3" type="Panel" parent="Marges/PanelBonneReponseNiveau4/VBoxContainer/ConteneurImage"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Marges/PanelBonneReponseNiveau4/VBoxContainer"]
+layout_mode = 2
+
+[node name="ReponseCorrecte" type="Sprite2D" parent="Marges/PanelBonneReponseNiveau4/VBoxContainer/HBoxContainer"]
+position = Vector2(994, -118)
+scale = Vector2(0.782468, 0.856796)
+texture = ExtResource("15_gat5o")
+
+[node name="EspaceVide" type="Panel" parent="Marges/PanelBonneReponseNiveau4/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="btnSuivant" type="Button" parent="Marges/PanelBonneReponseNiveau4/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_jf5gh")
+text = "S u i v a n t"
+
+[node name="PanelNiveau5" type="Panel" parent="Marges"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="Conteneur" type="VBoxContainer" parent="Marges/PanelNiveau5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = -37.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Enonce" type="RichTextLabel" parent="Marges/PanelNiveau5/Conteneur"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("8_3m5ip")
+bbcode_enabled = true
+text = "enonce"
+
+[node name="reponseUtilisateur" type="TextEdit" parent="Marges/PanelNiveau5/Conteneur"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+theme = ExtResource("17_8qk7f")
+
+[node name="btnValider" type="Button" parent="Marges/PanelNiveau5/Conteneur"]
+layout_mode = 2
+theme = ExtResource("9_jf5gh")
+text = "Valider ma réponse"
+
+[node name="PanelMauvaiseReponseNiveau5" type="Panel" parent="Marges"]
+visible = false
+clip_contents = true
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Marges/PanelMauvaiseReponseNiveau5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titre" type="RichTextLabel" parent="Marges/PanelMauvaiseReponseNiveau5/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 86
+bbcode_enabled = true
+text = "[center][color=#FF0000]D o m m a g e  ![/color][/center]
+"
+
+[node name="Explication" type="RichTextLabel" parent="Marges/PanelMauvaiseReponseNiveau5/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Marges/PanelMauvaiseReponseNiveau5/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="btnRetenter" type="Button" parent="Marges/PanelMauvaiseReponseNiveau5/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_jf5gh")
+text = "R e t e n t e r  m a  c h a n c e "
+
+[node name="Personnage" type="TextureRect" parent="Marges/PanelMauvaiseReponseNiveau5/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("14_gttkl")
+
+[node name="btnChemin" type="Button" parent="Marges/PanelMauvaiseReponseNiveau5/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_jf5gh")
+text = "R e t o u r n e r  a u  c h e m i n"
+
+[node name="PanelFinDeParcours" type="Panel" parent="Marges"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Marges/PanelFinDeParcours"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titre" type="RichTextLabel" parent="Marges/PanelFinDeParcours/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("7_tjha4")
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[center][color=#0E00FF]F é l i c i t a t i o n ! [/color]
+[color=#137500] T u  e s  d e v e n u  u n  p r o f e s s i o n e l  d e s  s o u s t r a c t i o n s ! [/color][/center]"
+
+[node name="SousTitre" type="RichTextLabel" parent="Marges/PanelFinDeParcours/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme = ExtResource("8_3m5ip")
+bbcode_enabled = true
+text = "[color=#FF0000] A p p u i s  s u r  l e  c o f f r e  p o u r  d é c o u v r i r  u n  m o r c e a u  d e  l ' i m a g e .[/color]"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Marges/PanelFinDeParcours/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="EspaceVide" type="Panel" parent="Marges/PanelFinDeParcours/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="btnCoffreFerme" type="Button" parent="Marges/PanelFinDeParcours/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+icon = ExtResource("6_ixj46")
+flat = true
+
+[node name="EspaceVide2" type="Panel" parent="Marges/PanelFinDeParcours/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="PanelRecompenses" type="Panel" parent="Marges"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_6c508")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Marges/PanelRecompenses"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Marges/PanelRecompenses/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CoffreOuvert" type="Sprite2D" parent="Marges/PanelRecompenses/VBoxContainer/HBoxContainer"]
+position = Vector2(152, 482)
+texture = ExtResource("21_8xibu")
+
+[node name="ConteneurImage" type="HBoxContainer" parent="Marges/PanelRecompenses/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EspaceVide2" type="Panel" parent="Marges/PanelRecompenses/VBoxContainer/HBoxContainer/ConteneurImage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="recompense" type="TextureRect" parent="Marges/PanelRecompenses/VBoxContainer/HBoxContainer/ConteneurImage"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="btnChemin" type="Button" parent="Marges/PanelRecompenses/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("9_jf5gh")
+text = " R e t o u r  a u  c h e m i n ! "
+
+[connection signal="toggled" from="Marges/PanelNiveau1/Conteneur/ConteneurProposition/Conteneur/Proposition1" to="." method="on_checkbox_clique" binds= ["Proposition1", "Proposition1"]]
+[connection signal="toggled" from="Marges/PanelNiveau1/Conteneur/ConteneurProposition/Conteneur/Proposition2" to="." method="on_checkbox_clique" binds= ["Proposition2", "Proposition2"]]
+[connection signal="toggled" from="Marges/PanelNiveau1/Conteneur/ConteneurProposition/Conteneur2/Proposition3" to="." method="on_checkbox_clique" binds= ["Proposition3", "Proposition3"]]
+[connection signal="toggled" from="Marges/PanelNiveau1/Conteneur/ConteneurProposition/Conteneur2/Proposition4" to="." method="on_checkbox_clique" binds= ["Proposition4", "Proposition4"]]

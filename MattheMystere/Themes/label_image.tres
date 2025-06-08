@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://5qjgeo5hsgjr"]
+
+[ext_resource type="SystemFont" uid="uid://d1khr5p4wim2t" path="res://Themes/police_d_ecriture.tres" id="1_1p43h"]
+
+[resource]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_1p43h")

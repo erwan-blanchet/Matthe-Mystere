@@ -1,0 +1,237 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvu2hxmmyefyx"]
+
+[ext_resource type="Script" path="res://Scripts/view_addition_lvl_1.gd" id="1_rgc70"]
+[ext_resource type="Theme" uid="uid://7o0kntx0sw2k" path="res://Themes/Parcours/boutons.tres" id="2_6s1pn"]
+[ext_resource type="Texture2D" uid="uid://bm0d6xyoabq8m" path="res://Images/image_reponse1/img1.png" id="2_v3hf6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r8n84"]
+bg_color = Color(0.560784, 0.560784, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjik7"]
+bg_color = Color(0.560784, 0.560784, 0, 1)
+
+[node name="View_addition_lvl1" type="Control" node_paths=PackedStringArray("lbl_firstNumber", "lbl_secondeNumber", "lbl_resultat", "lbl_message", "first_reponse", "second_reponse", "third_reponse", "fourth_reponse", "btn_validerReponse", "btn_suivant", "btn_recup_image", "view_level_1", "panel_image_gagne")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rgc70")
+lbl_firstNumber = NodePath("Panel/GridContainer_calcul/Label_firstNumber")
+lbl_secondeNumber = NodePath("Panel/GridContainer_calcul/Label_secondNumber")
+lbl_resultat = NodePath("Panel/GridContainer_calcul/Label_resultat")
+lbl_message = NodePath("Panel/Label_message")
+first_reponse = NodePath("Panel/GridContainer_reponse/CheckBox1")
+second_reponse = NodePath("Panel/GridContainer_reponse/CheckBox2")
+third_reponse = NodePath("Panel/GridContainer_reponse/CheckBox3")
+fourth_reponse = NodePath("Panel/GridContainer_reponse/CheckBox4")
+btn_validerReponse = NodePath("Panel/btn_validerReponse")
+btn_suivant = NodePath("Panel_image/btn_suivant")
+btn_recup_image = NodePath("Panel/btn_recup_image")
+view_level_1 = NodePath("Panel")
+panel_image_gagne = NodePath("Panel_image")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r8n84")
+
+[node name="GridContainer_calcul" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -159.5
+offset_right = 224.0
+offset_bottom = -132.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="Label_firstNumber" type="Label" parent="Panel/GridContainer_calcul"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+text = "firstNumber"
+
+[node name="Label_operator" type="Label" parent="Panel/GridContainer_calcul"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label_secondNumber" type="Label" parent="Panel/GridContainer_calcul"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "secondNumber"
+
+[node name="Label_operator2" type="Label" parent="Panel/GridContainer_calcul"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label_resultat" type="Label" parent="Panel/GridContainer_calcul"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Resultat"
+
+[node name="GridContainer_reponse" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = -46.0
+offset_right = 131.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
+columns = 3
+
+[node name="CheckBox1" type="CheckBox" parent="Panel/GridContainer_reponse"]
+layout_mode = 2
+action_mode = 0
+text = "reponse1"
+
+[node name="Control_separator" type="Control" parent="Panel/GridContainer_reponse"]
+layout_mode = 2
+
+[node name="CheckBox2" type="CheckBox" parent="Panel/GridContainer_reponse"]
+layout_mode = 2
+text = "reponse2"
+
+[node name="CheckBox3" type="CheckBox" parent="Panel/GridContainer_reponse"]
+layout_mode = 2
+text = "reponse3"
+
+[node name="Control_separator2" type="Control" parent="Panel/GridContainer_reponse"]
+layout_mode = 2
+
+[node name="CheckBox4" type="CheckBox" parent="Panel/GridContainer_reponse"]
+layout_mode = 2
+text = "reponse4"
+
+[node name="btn_validerReponse" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -282.0
+offset_top = -57.0
+offset_right = -21.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_6s1pn")
+text = "Valider ma réponse"
+
+[node name="btn_recup_image" type="Button" parent="Panel"]
+visible = false
+custom_minimum_size = Vector2(120, 31)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 29.0
+offset_top = -59.0
+offset_right = 329.0
+offset_bottom = -24.0
+grow_vertical = 0
+theme = ExtResource("2_6s1pn")
+text = "Récupérer mon image"
+
+[node name="Label_message" type="Label" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 335.0
+offset_top = 349.0
+offset_right = 623.0
+offset_bottom = 372.0
+text = "ICI S'AFFICHERA UN MESSAGE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer_show_message" type="Timer" parent="."]
+
+[node name="Timer_show_message_error" type="Timer" parent="."]
+
+[node name="Panel_image" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vjik7")
+
+[node name="TextureRect" type="TextureRect" parent="Panel_image"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v3hf6")
+
+[node name="Label" type="Label" parent="Panel_image"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -182.0
+offset_right = 146.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Féliciation ! Votre réponse est correcte"
+
+[node name="btn_suivant" type="Button" parent="Panel_image"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = -48.0
+offset_right = -9.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_6s1pn")
+text = "suivant"
+
+[connection signal="toggled" from="Panel/GridContainer_reponse/CheckBox1" to="." method="on_checkbox_clicked" binds= ["CheckBox1", "CheckBox1"]]
+[connection signal="toggled" from="Panel/GridContainer_reponse/CheckBox2" to="." method="on_checkbox_clicked" binds= ["CheckBox2", "CheckBox2"]]
+[connection signal="toggled" from="Panel/GridContainer_reponse/CheckBox3" to="." method="on_checkbox_clicked" binds= ["CheckBox3", "CheckBox3"]]
+[connection signal="toggled" from="Panel/GridContainer_reponse/CheckBox4" to="." method="on_checkbox_clicked" binds= ["CheckBox4", "CheckBox4"]]
+[connection signal="timeout" from="Timer_show_message" to="." method="_on_timer_show_message_timeout"]
+[connection signal="timeout" from="Timer_show_message_error" to="." method="_on_timer_show_message_error_timeout"]

@@ -1,0 +1,360 @@
+[gd_scene load_steps=10 format=3 uid="uid://byyjdhabsvps0"]
+
+[ext_resource type="Script" path="res://Scripts/Cours.gd" id="1_uab6h"]
+[ext_resource type="Theme" uid="uid://bqjsekvowtvs5" path="res://Themes/Parcours/panel.tres" id="2_e5okb"]
+[ext_resource type="Theme" uid="uid://dwk50kns6alku" path="res://Themes/Cours/boutons_cours.tres" id="3_5g6io"]
+[ext_resource type="SystemFont" uid="uid://d1khr5p4wim2t" path="res://Themes/police_d_ecriture.tres" id="4_3bhqs"]
+[ext_resource type="Theme" uid="uid://cjmh2435o0gy7" path="res://Themes/Cours/contenu_cours.tres" id="5_1516i"]
+[ext_resource type="Theme" uid="uid://dpn4v88j1aolk" path="res://Themes/Cours/ecriture_boutons.tres" id="5_srjyc"]
+
+[sub_resource type="Theme" id="Theme_wufde"]
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/font_sizes/bold_font_size = 50
+RichTextLabel/font_sizes/bold_italics_font_size = 50
+RichTextLabel/font_sizes/italics_font_size = 50
+RichTextLabel/font_sizes/mono_font_size = 50
+RichTextLabel/font_sizes/normal_font_size = 50
+RichTextLabel/fonts/bold_font = ExtResource("4_3bhqs")
+RichTextLabel/fonts/bold_italics_font = ExtResource("4_3bhqs")
+RichTextLabel/fonts/italics_font = ExtResource("4_3bhqs")
+RichTextLabel/fonts/mono_font = ExtResource("4_3bhqs")
+RichTextLabel/fonts/normal_font = ExtResource("4_3bhqs")
+
+[sub_resource type="Theme" id="Theme_laem2"]
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/font_sizes/bold_font_size = 50
+RichTextLabel/font_sizes/bold_italics_font_size = 50
+RichTextLabel/font_sizes/italics_font_size = 50
+RichTextLabel/font_sizes/mono_font_size = 50
+RichTextLabel/font_sizes/normal_font_size = 50
+RichTextLabel/fonts/bold_font = ExtResource("4_3bhqs")
+RichTextLabel/fonts/bold_italics_font = ExtResource("4_3bhqs")
+RichTextLabel/fonts/italics_font = ExtResource("4_3bhqs")
+RichTextLabel/fonts/mono_font = ExtResource("4_3bhqs")
+RichTextLabel/fonts/normal_font = ExtResource("4_3bhqs")
+
+[sub_resource type="Theme" id="Theme_l1nl6"]
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/font_sizes/bold_font_size = 50
+RichTextLabel/font_sizes/bold_italics_font_size = 50
+RichTextLabel/font_sizes/italics_font_size = 50
+RichTextLabel/font_sizes/mono_font_size = 50
+RichTextLabel/font_sizes/normal_font_size = 50
+RichTextLabel/fonts/bold_font = ExtResource("4_3bhqs")
+RichTextLabel/fonts/bold_italics_font = ExtResource("4_3bhqs")
+RichTextLabel/fonts/italics_font = ExtResource("4_3bhqs")
+RichTextLabel/fonts/mono_font = ExtResource("4_3bhqs")
+RichTextLabel/fonts/normal_font = ExtResource("4_3bhqs")
+
+[node name="Cours" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uab6h")
+
+[node name="Fond" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.996078, 0.898039, 0.576471, 1)
+
+[node name="Marges" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="PanelAccueilCours" type="Panel" parent="Marges"]
+layout_mode = 2
+theme = ExtResource("2_e5okb")
+
+[node name="ConteneurBoutonsCours" type="HBoxContainer" parent="Marges/PanelAccueilCours"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="btnCoursAddition" type="Button" parent="Marges/PanelAccueilCours/ConteneurBoutonsCours"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_5g6io")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3bhqs")
+theme_override_font_sizes/font_size = 35
+
+[node name="txtBouton" type="RichTextLabel" parent="Marges/PanelAccueilCours/ConteneurBoutonsCours/btnCoursAddition"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -162.0
+offset_bottom = 284.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("5_srjyc")
+bbcode_enabled = true
+text = "[center]E x p l o r e s  
+ l e s  
+a d i t i o n s  ![/center]"
+autowrap_mode = 2
+
+[node name="btnCoursSoustraction" type="Button" parent="Marges/PanelAccueilCours/ConteneurBoutonsCours"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_5g6io")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3bhqs")
+theme_override_font_sizes/font_size = 35
+
+[node name="txtBouton2" type="RichTextLabel" parent="Marges/PanelAccueilCours/ConteneurBoutonsCours/btnCoursSoustraction"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -166.0
+offset_bottom = 307.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("5_srjyc")
+bbcode_enabled = true
+text = "[center]P l o n g e  
+d a n s  
+l e  m o n d e  d e s  
+ s o u s t r a c t i o n s   ! [/center]"
+autowrap_mode = 2
+
+[node name="btnCoursComparaison" type="Button" parent="Marges/PanelAccueilCours/ConteneurBoutonsCours"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_5g6io")
+
+[node name="txtBouton3" type="RichTextLabel" parent="Marges/PanelAccueilCours/ConteneurBoutonsCours/btnCoursComparaison"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -226.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("5_srjyc")
+bbcode_enabled = true
+text = " [center]P a r t o n s  à  l ' a v a n t u r e   d es  
+ c o m p a r a i s o n s  ! [/center]"
+
+[node name="PanelCoursAddition" type="Panel" parent="Marges"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_e5okb")
+
+[node name="separationFormat" type="HBoxContainer" parent="Marges/PanelCoursAddition"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="separationCours" type="VBoxContainer" parent="Marges/PanelCoursAddition/separationFormat"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="titreCours" type="RichTextLabel" parent="Marges/PanelCoursAddition/separationFormat/separationCours"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme = SubResource("Theme_wufde")
+bbcode_enabled = true
+text = "L e s   a d d i t i o n s"
+
+[node name="cours" type="RichTextLabel" parent="Marges/PanelCoursAddition/separationFormat/separationCours"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_1516i")
+bbcode_enabled = true
+text = "[color=#0E00FF]L e s  a d d i t i o n s  s o n t  u n  o u t i l  m a t h é m a t i q u e  t r è s  i m p o r t a n t .[/color] [color=#137500]  E l l e s  n o u s  a i d e n t  à  c o m b i n e r  d e s  n o m b r e s  p o u r  o b t e n i r  u n  t o t a l .[/color] [color=#FF0000]  A u j o u r d ' h u i ,  n o u s  a l l o n s  a p p r e n d r e  c e  q u e  s o n t  l e s  a d d i t i o n s ,  p o u r q u o i   e l l e s  s o n t  u t i l e s  e t  c o m m e n t  l e s   f a i r e .[/color] 
+
+[color=#0E00FF]P o u r q u o i  l e s  a d d i t i o n s  s o n t - e l l e s  u t i l e s  ?[/color] 
+[color=#137500]  L e s  a d d i t i o n s  s o n t  u t i l e s  d a n s  d e  n o m b r e u s e s  s i t u a t i o n s  d e  l a  v i e  q u o t i d i e n n e .[/color] [color=#FF0000]  P a r  e x e m p le ,  q u a n d  v o u s  a v e z  d e s  b o n b o n s  e t  q u e  v o u s  e n  a j o u t e z  d ' a u t r e s ,  v o u s  f a i t e s   u n e  a d d i t i o n  p o u r  s a v o i r  c o m b i e n  v o u s  e n  a v e z  m a i n t e n a n t  a u  t o t a l .[/color] [color=#0E00FF]  L e s  a d d i t i o n s  n o u s  a i d e n t  é g a l e m e n t  à  r é s o u d r e  d e s  p r o b l è m e s  m a t h é m a t i q u e s   e t  à  c o m p r e nd r e  c o m me n t  c o m b i n e r d e s   q u a n t i t é s .[/color] 
+
+[color=#137500]C o m m e n t  ç a  m a r c h e ?[/color] 
+[color=#FF0000]  L e s  a d d i t i o n s  s e  f o n t  e n  c o m b i n a n t  d e s  n o m b r e s  e n s e m b l e .[/color] [color=#0E00FF]  L o r s q u e  n o u s  a d d i t i o n n o n s  d e u x  n o m b r e s ,  n o u s  l e s  m e t t o n s  e n s e m b l e  p o u r  o b t e n i r  u n  n o u v e a u  n o m b r e  a p p e l é  \" s o m m e \" .[/color] 
+
+[color=#137500]E x e m p l e :[/color] 
+[color=#FF0000]I m a g i n o n s  q u e  n o u s  a v o n s  3  p o m m e s  e t  q u e  n o u s  e n  a j o u t o n s  2  d e  p l u s .[/color] [color=#0E00FF]  P o u r  s a v o i r  c o m b i e n  d e  p o m m e s  n o u s  a v o n s  m a i n t e n a n t  a u  t o t a l ,  n o u s  d e v o n s  f a i r e  u n e  a d d i t i o n .[/color]
+
+[color=#137500]T o u t  d ' a b o r d ,  n o u s  é c r i v o n s  l e s  n o m b r e s  q u e  n o u s  v o u l o n s  a j o u t e r  e n s e m b l e  :[/color] 
+	[color=#FF0000]3  ( n o m b r e  d e  p o m m e s  q u e  n o u s  a v i o n s )[/color] 
+	[color=#0E00FF]+ 2 ( n o m b r e   d e   p o m m e s  q u e  n o u s  a j o u t o n s )[/color] 
+[color=#137500]  E n s u i t e ,  n o u s  c o m b i n o n s  c e s  n o m b r e s  e n  l e s  a j o u t a n t  :  3  +  2  =  5 .[/color] 
+[color=#FF0000]D o n c ,  n o u s  a v o n s  m a i n t e n a n t  5  p o m m e s  a u  t o t a l .[/color] 
+
+[color=#0E00FF]C o n c l u s i o n :[/color] 
+[color=#137500]L e s  a d d i t i o n s  s o n t  u n  o u t i l  m a t h é m a t i q u e  i m p o r t a n t  q u i   n o u s  a i d e  à  c o m b i n e r  d e s  n o m b r e s  p o u r  o b t e n i r  u n  t o t a l .[/color]  [color=#FF0000]  E l l e s  s o n t  u t i l e s  d a n s  d e  n o m b r e u s e s  s i t u a t i o n s  d e  l a  v i e  q u o t i d i e n n e  e t  n o u s  a i d e n t  à  r é s o u d r e  d e s  p r o b l è m e s  m a t h é m a t i q u e s .[/color] [color=#0E00FF]  E n  p r a t i q u a n t  l e s  a d d i t i o n s ,  n o u s  d e v e n o n s  m e i l l e u r s  e n  m a t h é m a t i q u e s  e t  e n  r é s o l u t i o n  d e  p r o b l è m e s.[/color]"
+
+[node name="separationAutreFormat" type="VBoxContainer" parent="Marges/PanelCoursAddition/separationFormat"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="btnVideo" type="Button" parent="Marges/PanelCoursAddition/separationFormat/separationAutreFormat"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_5g6io")
+text = " R e g a r d e r  u n e 
+v i d é o ."
+
+[node name="btnArticle" type="Button" parent="Marges/PanelCoursAddition/separationFormat/separationAutreFormat"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_5g6io")
+text = " L i r e  p l u s  !"
+
+[node name="PanelCoursSoustraction" type="Panel" parent="Marges"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_e5okb")
+
+[node name="separationFormat" type="HBoxContainer" parent="Marges/PanelCoursSoustraction"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="separationCours" type="VBoxContainer" parent="Marges/PanelCoursSoustraction/separationFormat"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="titreCours" type="RichTextLabel" parent="Marges/PanelCoursSoustraction/separationFormat/separationCours"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme = SubResource("Theme_laem2")
+bbcode_enabled = true
+text = "L e s   s o u s t r a c t i o n s"
+
+[node name="cours" type="RichTextLabel" parent="Marges/PanelCoursSoustraction/separationFormat/separationCours"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_1516i")
+bbcode_enabled = true
+text = "[color=#0E00FF]L a  s o u s t r a c t i o n ,  c ' e s t  c o m m e  e n l e v e r  d e s  c h o s e s  ![/color] [color=#137500]P a r  e x e m p l e ,  s i  v o u s  a v e z  5  b o n b o n s  e t  q u e  v o u s  e n  d o n n e z  2  à  v o t r e  a m i ,  v o u s  d e v e z  e n l e v e r  2  b o n b o n s  d e  v o t r e  p i l e .[/color] [color=#FF0000]C ' e s t  ç a  l a  s o u s t r a c t i o n  ![/color]
+
+[color=#0E00FF]C o m m e n t  f a i r e  u n e  s o u s t r a c t i o n :[/color]
+[color=#137500]P o u r  f a i r e  u n e  s o u s t r a c t i o n ,  v o u s  a v e z  b e s o i n  d e  d e u x  n o m b r e s .[/color] [color=#FF0000]  L e  p r e m i e r  n o m b r e  e s t  l e  p l u s  g r a n d ,  e t  l e  d e u x i è m e  e s t  c e l u i  q u e  v o u s  a l l e z  e n l e v e r .[/color] [color=#0E00FF]  P a r  e x e m p l e ,  s i  v o u s  a v e z  8  p o m m e s  e t  q u e  v o u s  v o u l e z  e n  e n l e v e r  3 ,  v o u s  f a i t e s  c o m m e  ç a  :  8  -  3  =  ? [/color]
+
+[color=#137500]E x e m p l e  d e  s o u s t r a c t i o n :[/color]
+[color=#FF0000]I m a g i n o n s  q u e  v o u s  a v e z  1 0  c r a y o n s  e t  q u e  v o u s  e n  p r ê t e z  4  à  v o t r e  a m i .[/color] [color=#0E00FF]  C o m b i e n  d e  c r a y o n s  v o u s  r e s t e - t - i l  ?[/color] [color=#137500]P o u r  l e  s a v o i r ,  v o u s  f a i t e s  l a  s o u s t r a c t i o n  s u i v a n t e  :  1 0  -  4  =  6 .[/color] [color=#FF0000]  C e l a  s i g n i f i e  q u ' i l  v o u s  r e s t e  6  c r a y o n s  a p r è s  e n  a v o i r  p r ê t é  4 .[/color]
+
+[color=#0E00FF]A s t u c e  :[/color]
+[color=#137500]S i  v o u s  v o u l e z  v é r i f i e r  s i  v o t r e  r é p o n s e  e s t  c o r r e c t e ,  v o u s  p o u v e z  c o m p t e r  l e s  c r a y o n s  q u e  v o u s  a v e z  l a i s s é s  a p r è s  e n  a v o i r  p r ê t é  4 .[/color] [color=#FF0000]  C ' e s t  u n e  b o n n e  f a ç o n  d e  s ' a s s u r e r  q u e  v o u s  a v e z  b i e n  f a i t  l a  s o u s t r a c t i o n ![/color]
+
+[color=#0E00FF]L a  s o u s t r a c t i o n  e s t  u n e  c o m p é t e n c e  i m p o r t a n t e  e n  m a t h é m a t i q u e s .[/color] [color=#137500]  C e l a  v o u s  a i d e  à  c o m p r e n d r e  c o m b i e n  i l  v o u s  r e s t e  d e  c h o s e s  a p r è s  e n  a v o i r  e n l e v é .[/color] [color=#FF0000]  C ' e s t  c o m m e  u n  j e u  o ù  v o u s  e n l e v e z  d e s  c h o s e s  p o u r  v o i r  c e  q u i  r e s t e ![/color]"
+
+[node name="separationAutreFormat" type="VBoxContainer" parent="Marges/PanelCoursSoustraction/separationFormat"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="btnVideo" type="Button" parent="Marges/PanelCoursSoustraction/separationFormat/separationAutreFormat"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_5g6io")
+text = " R e g a r d e r  u n e 
+v i d é o ."
+
+[node name="btnArticle" type="Button" parent="Marges/PanelCoursSoustraction/separationFormat/separationAutreFormat"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_5g6io")
+text = "L i r e  p l u s  !"
+
+[node name="PanelCoursComparaison" type="Panel" parent="Marges"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_e5okb")
+
+[node name="separationFormat" type="HBoxContainer" parent="Marges/PanelCoursComparaison"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="separationCours" type="VBoxContainer" parent="Marges/PanelCoursComparaison/separationFormat"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="titreCours" type="RichTextLabel" parent="Marges/PanelCoursComparaison/separationFormat/separationCours"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme = SubResource("Theme_l1nl6")
+bbcode_enabled = true
+text = "L e s   c o m p a r a i s o n s"
+
+[node name="cours" type="RichTextLabel" parent="Marges/PanelCoursComparaison/separationFormat/separationCours"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_1516i")
+bbcode_enabled = true
+text = "[color=#0E00FF]L e s  c o m p a r a i s o n s ,  c ' e s t  q u a n d  o n  r e g a r d e  d e u x  c h o s e s  p o u r  v o i r  c o m m e n t  e l l e s  s o n t  d i f f é r e n t e s  o u  l e s q u e l l e s  s o n t  p l u s  g r a n d e s  o u  p l u s  p e t i t e s .[/color]
+
+[color=#137500]L e s  s  y m b o l e s  d e  c o m p a r a i s o n  :[/color]
+[color=#FF0000]I l  y  a  q u e l q u e s  s y m b o l e s  q u e  n o u s  u t i l i s o n s  p o u r  c o m p a r e r  d e s  n o m b r e s  :[/color]
+    [color=#0E00FF]P l u s  g r a n d  q u e  (>)  :  C e l a  s i g n i f i e  q u e  l e  n o m b r e  à  g a u c h e  d u  s y m b o l e  e s t  p l u s  g r a n d  q u e  l e  n o m b r e  à  d r o i t e .[/color] [color=#137500]P a r  e x e m p l e ,  5  >  3  s i g n i f i e  q u e  5  e s t  p l u s  g r a n d  q u e  3 .[/color]
+    
+    [color=#FF0000]P l u s  p e t i t  q u e  (<)  :  C e l a  s i g n i f i e  q u e  l e  n o m b r e  à  g a u c h e  d u  s y m b o l e  e s t  p l u s  p e t i t  q u e  l e  n o m b r e  à  d r o i t e .[/color] [color=#0E00FF]P a r  e x e m p l e ,  2  <  4  s i g n i f i e  q u e  2  e s t  p l u s  p e t i t  q u e  4 .[/color]
+    
+    [color=#137500]É g a l  à  (=)  :  C e l a  s i g n i f i e  q u e  l e s  d e u x  n o m b r e s  s o n t  l e s  m ê m e s .[/color] [color=#FF0000]P a r  e x e m p l e ,  3  =  3  s i g n i f i e  q u e  3  e s t  é g a l  à  3 .[/color]
+
+
+[color=#0E00FF]C o m m e n t  U t i l i s e r  l e s  C o m p a r a i s o n s :[/color]
+[color=#137500]P o u r  u t i l i s e r  l e s  c o m p a r a i s o n s ,  v o u s  r e g a r d e z  s i m p l e m e n t  l e s  n o m b r e s  e t  v o u s  l e s  c o m p a r e z  e n  u t i l i s a n t  l e s  s y m b o l e s .[/color] [color=#FF0000]P a r  e x e m p l e ,  s i  v o u s  a v e z  7  p o m m e s  e t  q u e  v o t r e  a m i  e n  a  5 ,  v o u s  p o u v e z  c o m p a r e r  l e s  q u a n t i t é s  d e  p o m m e s  c o m m e  c e c i  :  7  >  5 .[/color] [color=#0E00FF]C e l a  s i g n i f i e  q u e  v o u s  a v e z  p l u s  d e  p o m m e s  q u e  v o t r e  a m i .[/color]
+
+
+[color=#137500]E x e m p l e  d e  C o m p a r a i s o n :[/color]
+[color=#FF0000]I m a g i n o n s  q u e  v o u s  a y e z  6  b o n b o n s  e t  q u e  v o t r e  f r è r e  e n  a  8 .[/color] [color=#0E00FF]V o u s  p o u v e z  c o m p a r e r  l e  n o m b r e  d e  b o n b o n s  c o m m e  ç a  :  6  <  8 .[/color] [color=#137500]C e l a  s i g n i f i e  q u e  v o t r e  f r è r e  a  p l u s  d e  b o n b o n s  q u e  v o u s .[/color]
+
+[color=#FF0000]A s t u c e  :[/color]
+[color=#0E00FF]V o u s  p o u v e z  é g a l e m e n t  u t i l i s e r  v o s  d o i g t s  p o u r  c o m p a r e r  l e s  n o m b r e s .[/color] [color=#137500]S i  v o u s  a v e z  p l u s  d e  d o i g t s  l e v é s  q u e  v o t r e  a m i ,  c e l a  s i g n i f i e  q u e  v o u s  a v e z  p l u s  d e  c h o s e s  ![/color] [color=#FF0000]L e s  c o m p a r a i s o n s  s o n t  u t i l e s  p o u r  v o i r  c o m m e n t  l e s  c h o s e s  s o n t  d i f f é r e n t e s  o u  l e s q u e l l e s  s o n t  p l u s  g r a n d e s  o u  p l u s  p e t i t e s .[/color] [color=#0E00FF]C ' e s t  c o m m e  u n  j e u  p o u r  c o m p a r e r  d e s  c h o s e s  e t  v o i r  q u i  e n  a  p l u s  ![/color]
+"
+
+[node name="separationAutreFormat" type="VBoxContainer" parent="Marges/PanelCoursComparaison/separationFormat"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="btnVideo" type="Button" parent="Marges/PanelCoursComparaison/separationFormat/separationAutreFormat"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_5g6io")
+text = " R e g a r d e r  u n e 
+v i d é o ."
+
+[node name="btnArticle" type="Button" parent="Marges/PanelCoursComparaison/separationFormat/separationAutreFormat"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_5g6io")
+text = "L i r e  p l u s  !"

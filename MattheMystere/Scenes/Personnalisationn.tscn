@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dai5m8n1faqp3"]
+
+[ext_resource type="PackedScene" uid="uid://qb61jx4yfmde" path="res://Scenes/Code_acces.tscn" id="1_5ehop"]
+
+[node name="Personnalisationn" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CodeAcces" parent="." instance=ExtResource("1_5ehop")]
+layout_mode = 1

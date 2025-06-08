@@ -1,0 +1,178 @@
+[gd_scene load_steps=9 format=3 uid="uid://ck1yolfpn28yl"]
+
+[ext_resource type="Script" path="res://Scripts/view_chemin.gd" id="1_hjbif"]
+[ext_resource type="Theme" uid="uid://da3dpnk6xm3fg" path="res://Themes/Parcours/niveau_en_cours.tres" id="2_wbjpp"]
+[ext_resource type="Texture2D" uid="uid://cb17pykw3d4xx" path="res://Images/Parcours/personnage_niveau1.png" id="4_53qys"]
+[ext_resource type="Texture2D" uid="uid://dstlmqm4326et" path="res://Images/Parcours/personnage_niveau2.png" id="5_6dk52"]
+[ext_resource type="Texture2D" uid="uid://b1sgs4ygs1jqp" path="res://Images/Parcours/personnage_niveau3.png" id="6_0kx47"]
+[ext_resource type="Texture2D" uid="uid://batdigw7vn3pg" path="res://Images/Parcours/personnage_niveau4.png" id="7_q8ae7"]
+[ext_resource type="Texture2D" uid="uid://b0jypxg1erady" path="res://Images/Parcours/personnage_niveau5.png" id="8_etmeu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x6cg3"]
+bg_color = Color(0.560784, 0.560784, 0, 1)
+
+[node name="view_chemin" type="Control" node_paths=PackedStringArray("btn_niveau1", "btn_niveau2", "btn_niveau3", "btn_niveau4", "btn_niveau5", "btn_cours", "image1", "image2", "image3", "image4", "image5", "view_chemin", "coffre_ferme", "coffre_couvert")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hjbif")
+btn_niveau1 = NodePath("Panel/btn_niveau1")
+btn_niveau2 = NodePath("Panel/btn_niveau2")
+btn_niveau3 = NodePath("Panel/btn_niveau3")
+btn_niveau4 = NodePath("Panel/btn_niveau4")
+btn_niveau5 = NodePath("Panel/btn_niveau5")
+btn_cours = NodePath("Panel/btn_cours")
+image1 = NodePath("image1")
+image2 = NodePath("image2")
+image3 = NodePath("image3")
+image4 = NodePath("image4")
+image5 = NodePath("image5")
+view_chemin = NodePath("Panel")
+coffre_ferme = NodePath("Panel/coffre_ferme")
+coffre_couvert = NodePath("Panel/coffre_ouvert")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x6cg3")
+
+[node name="btn_cours" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 0
+offset_left = 127.0
+offset_top = 420.0
+offset_right = 192.0
+offset_bottom = 485.0
+theme = ExtResource("2_wbjpp")
+text = "Cours"
+
+[node name="btn_niveau1" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 0
+offset_left = 262.0
+offset_top = 287.0
+offset_right = 327.0
+offset_bottom = 352.0
+theme = ExtResource("2_wbjpp")
+disabled = true
+text = "1"
+
+[node name="btn_niveau2" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 0
+offset_left = 399.0
+offset_top = 132.0
+offset_right = 464.0
+offset_bottom = 197.0
+theme = ExtResource("2_wbjpp")
+disabled = true
+text = "2"
+
+[node name="btn_niveau3" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 0
+offset_left = 593.0
+offset_top = 124.0
+offset_right = 658.0
+offset_bottom = 189.0
+theme = ExtResource("2_wbjpp")
+disabled = true
+text = "3"
+
+[node name="btn_niveau4" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 0
+offset_left = 744.0
+offset_top = 217.0
+offset_right = 809.0
+offset_bottom = 282.0
+theme = ExtResource("2_wbjpp")
+disabled = true
+text = "4"
+
+[node name="btn_niveau5" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 0
+offset_left = 859.0
+offset_top = 364.0
+offset_right = 924.0
+offset_bottom = 429.0
+theme = ExtResource("2_wbjpp")
+disabled = true
+text = "5"
+
+[node name="coffre_ferme" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 938.0
+offset_top = 472.0
+offset_right = 1488.0
+offset_bottom = 925.0
+scale = Vector2(0.3, 0.3)
+
+[node name="coffre_ouvert" type="TextureRect" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+offset_left = 924.0
+offset_top = 476.0
+offset_right = 1510.0
+offset_bottom = 929.0
+scale = Vector2(0.3, 0.3)
+
+[node name="image1" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 246.0
+offset_top = 219.0
+offset_right = 336.0
+offset_bottom = 309.0
+texture = ExtResource("4_53qys")
+expand_mode = 2
+
+[node name="image2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 367.0
+offset_top = 64.0
+offset_right = 457.0
+offset_bottom = 154.0
+texture = ExtResource("5_6dk52")
+expand_mode = 2
+
+[node name="image3" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 584.0
+offset_top = 94.0
+offset_right = 674.0
+offset_bottom = 144.0
+texture = ExtResource("6_0kx47")
+expand_mode = 2
+
+[node name="image4" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 734.0
+offset_top = 168.0
+offset_right = 824.0
+offset_bottom = 258.0
+texture = ExtResource("7_q8ae7")
+expand_mode = 2
+
+[node name="image5" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 921.0
+offset_top = 371.0
+offset_right = 1011.0
+offset_bottom = 461.0
+texture = ExtResource("8_etmeu")
+expand_mode = 2

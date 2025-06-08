@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://cboeb0mgoiemi"]
+
+[ext_resource type="Script" path="res://Scripts/view_cours_addition.gd" id="1_bxh24"]
+[ext_resource type="Theme" uid="uid://7o0kntx0sw2k" path="res://Themes/Parcours/boutons.tres" id="2_cnbcx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2kgik"]
+bg_color = Color(0.560784, 0.560784, 0, 1)
+
+[node name="view_cours_addition" type="Control" node_paths=PackedStringArray("view_cours", "btn_commencer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bxh24")
+view_cours = NodePath("Panel")
+btn_commencer = NodePath("Panel/btn_commencer")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2kgik")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -185.5
+offset_right = 331.0
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "				
+Les additions nous 	aident á ajouter des nombres ensemble pour obtenir un nouveau nombre.
+
+Une addition est comment une recette de cuisine oú nous ajoutons des ingrédients 
+pour obtenir un délucieux plat !
+
+Comment faire une addidtion ?
+Regardons un exemple simple : 1 pomme + 1 pomme = 2 pommes"
+scroll_following = true
+
+[node name="btn_commencer" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -53.0
+offset_right = -16.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_cnbcx")
+text = "Commencer l'aventure"

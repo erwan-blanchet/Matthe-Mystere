@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkm8sqmk163bp"]
+
+[sub_resource type="GDScript" id="GDScript_lg4ey"]
+script/source = "extends ColorRect
+class_name Draggable
+
+#=========================== VARAIBLE DE CLASSE ===========================#
+#--- Variable de classe
+var id: int
+var original_label: String
+@export var label: Label
+#-- Mettre a true une fois que nous avons deposer l'élément sur notre cible
+var dropped_on_target: bool =  false
+#===========================================================================#
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	add_to_group(\"DRAGGABLE\")
+
+#================== FONCTION DE CLASSE ==================#
+#--------------- Fonction qui permet de savoir si un item est manipulé et déposé ---------------#
+func _get_drag_data(at_position: Vector2):
+	print(\"[Draggable] get_drag_data has run\")
+	if not dropped_on_target:
+		set_drag_preview(_get_preview_control())
+		return self
+#--------------------------------------------------------------------------------------#
+
+#-------------- Fonction qui permet d'avoir une prévisualisation durant l'action glisser déposer --------------#
+func _get_preview_control() -> Control:
+	var preview = ColorRect.new()
+	preview.size = size
+	var preview_color = color
+	preview_color.a = 0.5
+	preview.color = preview_color
+	return preview
+#----------------------------------------------------------------------------------------------------------------#
+#=========================================================#
+"
+
+[node name="Draggable" type="ColorRect" node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(120, 40)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.545098, 0.352941, 0.168627, 1)
+script = SubResource("GDScript_lg4ey")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "hello"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,50 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://dwk50kns6alku"]
+
+[ext_resource type="SystemFont" uid="uid://d1khr5p4wim2t" path="res://Themes/police_d_ecriture.tres" id="1_jchj7"]
+
+[sub_resource type="Gradient" id="Gradient_skp4u"]
+colors = PackedColorArray(0.213944, 0.646092, 0.991249, 1, 0.694118, 0.866667, 0.941176, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vao1u"]
+gradient = SubResource("Gradient_skp4u")
+fill_from = Vector2(0.0940171, 0.888889)
+fill_to = Vector2(0.824786, 0.149573)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x433m"]
+texture = SubResource("GradientTexture2D_vao1u")
+modulate_color = Color(0.694118, 0.866667, 0.941176, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vv7xx"]
+texture = SubResource("GradientTexture2D_vao1u")
+modulate_color = Color(0.694118, 0.866667, 0.941176, 1)
+
+[sub_resource type="Gradient" id="Gradient_lcqc2"]
+colors = PackedColorArray(0.352941, 0.235294, 0.176471, 1, 0.517647, 0.34902, 0.0823529, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yi2gy"]
+gradient = SubResource("Gradient_lcqc2")
+fill_from = Vector2(0.615385, 0.205128)
+fill_to = Vector2(0.636752, 0.17094)
+repeat = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4tw3f"]
+texture = SubResource("GradientTexture2D_yi2gy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_74viq"]
+texture = SubResource("GradientTexture2D_vao1u")
+modulate_color = Color(0.694118, 0.866667, 0.941176, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkw6v"]
+texture = SubResource("GradientTexture2D_vao1u")
+modulate_color = Color(0.694118, 0.866667, 0.941176, 1)
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_jchj7")
+Button/styles/disabled = SubResource("StyleBoxTexture_x433m")
+Button/styles/focus = SubResource("StyleBoxTexture_vv7xx")
+Button/styles/hover = SubResource("StyleBoxTexture_4tw3f")
+Button/styles/normal = SubResource("StyleBoxTexture_74viq")
+Button/styles/pressed = SubResource("StyleBoxTexture_mkw6v")

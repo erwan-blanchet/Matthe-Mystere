@@ -1,0 +1,297 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfi4wdkhkgfrl"]
+
+[ext_resource type="Theme" uid="uid://7o0kntx0sw2k" path="res://Themes/Parcours/boutons.tres" id="1_26gd6"]
+[ext_resource type="Texture2D" uid="uid://cxm7avsqefqbp" path="res://Images/image_reponse4/img4.png" id="2_d8ik2"]
+
+[sub_resource type="GDScript" id="GDScript_t1hb8"]
+script/source = "extends Control
+
+
+
+#================== VARIABLE ET NOEUDS ==================#
+#**** Récupération des noeuds ****#
+@export var lbl_message:Label
+@export var lbl_first_number:Label
+@export var textExdit_answer: TextEdit
+@export var lbl_resultat: Label
+@export var btn_valider: Button
+@export var btn_recup_image: Button
+@export var view_addition_lvl4: Panel
+@export var panel_image: Panel
+@export var btn_suivant: Button
+
+#**** générateur de nombre aléatoire ****#
+var rng = RandomNumberGenerator.new()
+
+#**** Vairable de classe ****#
+var rnd_first_nummber = rng.randi_range(1,50)
+var rnd_second_number = rng.randi_range(1,50)
+var resultat: int
+var valeur_attendue: int
+
+#--- Chargement de la view chemin ---#
+@onready var view_chemin: PackedScene = preload(\"res://Scenes/view_chemin.tscn\")
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	_init_vue()
+	_gestion_click_boutton()
+
+
+#================================= FONCTIONS DE CLASSE =================================#
+#**** Fonction d'initialisation du niveau ****#
+func _init_vue() -> void:
+	resultat = rnd_first_nummber + rnd_second_number
+	lbl_first_number.text = str(rnd_first_nummber)
+	lbl_resultat.text = str(resultat)
+	valeur_attendue = int(lbl_resultat.text) - int(lbl_first_number.text)
+	
+#**** Fonction qui reagit au clic du boutton valider ****#
+func on_click_btn_valider() -> void:
+	_verif_calcul()
+
+#**** Fonction qui reagit au clic du boutton suivant ****#	
+func on_click_btn_recup_image() -> void:
+	view_addition_lvl4.visible = false
+	panel_image.visible = true
+	
+func on_click_btn_suivant () -> void:
+	panel_image.visible = false
+	var vue_chemin = view_chemin.instantiate()
+	get_parent().add_child(vue_chemin)
+	vue_chemin.CURRENT_NIVEAU = 5
+	vue_chemin.visible = true	
+#*** Fonction appelé par la fonction [on_click_btn_valider] qui vérifie le calcul ****#
+func _verif_calcul() -> void:
+	var get_answer = textExdit_answer.text
+	
+	if (get_answer.is_empty()):
+		print(\"VEUILLEZ REMPLIR LE CHAMP\")
+		$Timer_show_message_error.start()
+		lbl_message.text = \"VEUILLEZ REMPLIR LE CHAMP\"
+	else:
+		if(get_answer != str(valeur_attendue)):
+			print(\"RÉPONSE FAUSSE\")
+			$Timer_show_message_error.start()
+			lbl_message.text = \"RÉPONSE FAUSSE\"
+		else:
+			print(\"BONNE RÉPONSE\")
+			$Timer_show_message.start()
+#*************************************************************************************#
+
+#**** gestionnaire de click sur boutton ****#
+func _gestion_click_boutton() -> void:
+	btn_valider.button_down.connect(on_click_btn_valider)
+	btn_recup_image.button_down.connect(on_click_btn_recup_image)
+	btn_suivant.button_down.connect(on_click_btn_suivant)
+#**************************************************************#
+
+#**** Timer qui affiche un message en cas de mauvaise réponse ****#
+func _on_timer_show_message_error_timeout():
+	lbl_message.visible = true
+#**************************************************************#
+
+#**** timer qui affiche un message en cas de bonne réponse ****#
+func _on_timer_show_message_timeout():
+	lbl_message.text = \"BONNE RÉPONSE\"
+	lbl_message.visible = true
+	btn_recup_image.visible = true
+#**************************************************************#
+#======================================================================================#
+
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tubdq"]
+bg_color = Color(0.560784, 0.560784, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31ehf"]
+bg_color = Color(0.560784, 0.560784, 0, 1)
+
+[node name="view_addition_level_4" type="Control" node_paths=PackedStringArray("lbl_message", "lbl_first_number", "textExdit_answer", "lbl_resultat", "btn_valider", "btn_recup_image", "view_addition_lvl4", "panel_image", "btn_suivant")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_t1hb8")
+lbl_message = NodePath("Panel/Label_message")
+lbl_first_number = NodePath("Panel/GridContainer/Label_firstNumber")
+textExdit_answer = NodePath("Panel/GridContainer/TextEdit")
+lbl_resultat = NodePath("Panel/GridContainer/Label_resultat")
+btn_valider = NodePath("Panel/btn_valider")
+btn_recup_image = NodePath("Panel/btn_recup_image")
+view_addition_lvl4 = NodePath("Panel")
+panel_image = NodePath("Panel_image")
+btn_suivant = NodePath("Panel_image/btn_suivant")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tubdq")
+
+[node name="Label_message" type="Label" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -224.0
+offset_right = 192.0
+offset_bottom = -201.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ICI S'AFFICHERA UN MESSAGE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -11.5
+offset_right = 105.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 30
+columns = 5
+
+[node name="Label_firstNumber" type="Label" parent="Panel/GridContainer"]
+layout_mode = 2
+text = "NUMBER 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label_operator" type="Label" parent="Panel/GridContainer"]
+layout_mode = 2
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+placeholder_text = "		   ?"
+
+[node name="Label_operator2" type="Label" parent="Panel/GridContainer"]
+layout_mode = 2
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label_resultat" type="Label" parent="Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "NUMBER 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btn_valider" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(120, 31)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -49.0
+offset_right = -24.0
+offset_bottom = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_26gd6")
+text = "Valider"
+
+[node name="btn_recup_image" type="Button" parent="Panel"]
+visible = false
+custom_minimum_size = Vector2(120, 31)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = -59.0
+offset_right = 336.0
+offset_bottom = -24.0
+grow_vertical = 0
+theme = ExtResource("1_26gd6")
+text = "Récupérer mon image"
+
+[node name="Timer_show_message_error" type="Timer" parent="."]
+one_shot = true
+
+[node name="Timer_show_message" type="Timer" parent="."]
+
+[node name="Panel_image" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_31ehf")
+
+[node name="Label_message" type="Label" parent="Panel_image"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.5
+offset_top = -182.0
+offset_right = 148.5
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Féliciation ! Votre réponse est correcte"
+
+[node name="TextureRect_image" type="TextureRect" parent="Panel_image"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_d8ik2")
+
+[node name="btn_suivant" type="Button" parent="Panel_image"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = -48.0
+offset_right = -9.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_26gd6")
+text = "Suivant"
+
+[connection signal="timeout" from="Timer_show_message_error" to="." method="_on_timer_show_message_error_timeout"]
+[connection signal="timeout" from="Timer_show_message" to="." method="_on_timer_show_message_timeout"]

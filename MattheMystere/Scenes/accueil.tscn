@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://phnqmvxl60ca"]
+
+[ext_resource type="Script" path="res://Scripts/accueil.gd" id="1_pej6k"]
+[ext_resource type="Texture2D" uid="uid://fwlwrf4wl1ay" path="res://Images/fond.jpg" id="2_0xiyx"]
+[ext_resource type="Texture2D" uid="uid://4dbtf3hrhaie" path="res://Images/logo.png" id="3_qg6dh"]
+[ext_resource type="Theme" uid="uid://7o0kntx0sw2k" path="res://Themes/Parcours/boutons.tres" id="4_xt4rg"]
+
+[node name="Accueil" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pej6k")
+
+[node name="Fond" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0xiyx")
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -255.0
+offset_top = -248.5
+offset_right = 255.0
+offset_bottom = 248.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qg6dh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -379.0
+offset_top = -82.0
+offset_right = 334.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 200
+
+[node name="btnDemarrer" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_xt4rg")
+text = "Je suis prêt pour l'aventure !"
+
+[node name="btnFermer" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_xt4rg")
+text = "Quitter"

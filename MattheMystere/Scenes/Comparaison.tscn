@@ -1,0 +1,1176 @@
+[gd_scene load_steps=20 format=3 uid="uid://cm5bdvk3ndc42"]
+
+[ext_resource type="Script" path="res://Scripts/Parcours/Comparaison.gd" id="1_the0t"]
+[ext_resource type="Theme" uid="uid://bqjsekvowtvs5" path="res://Themes/Parcours/panel.tres" id="2_fdqal"]
+[ext_resource type="Theme" uid="uid://da3dpnk6xm3fg" path="res://Themes/Parcours/niveau_en_cours.tres" id="2_ghent"]
+[ext_resource type="Texture2D" uid="uid://qk4nm0rr1l2q" path="res://Images/Parcours/coffre_ferme.png" id="3_yc3o4"]
+[ext_resource type="Texture2D" uid="uid://bould2hdlf0i1" path="res://Images/Parcours/coffre_ouvert.png" id="4_q6gg1"]
+[ext_resource type="Texture2D" uid="uid://cb17pykw3d4xx" path="res://Images/Parcours/personnage_niveau1.png" id="5_ad6fw"]
+[ext_resource type="Texture2D" uid="uid://dstlmqm4326et" path="res://Images/Parcours/personnage_niveau2.png" id="6_eaj32"]
+[ext_resource type="Texture2D" uid="uid://b1sgs4ygs1jqp" path="res://Images/Parcours/personnage_niveau3.png" id="7_8bcth"]
+[ext_resource type="Texture2D" uid="uid://batdigw7vn3pg" path="res://Images/Parcours/personnage_niveau4.png" id="8_uerj3"]
+[ext_resource type="Texture2D" uid="uid://b0jypxg1erady" path="res://Images/Parcours/personnage_niveau5.png" id="9_cng4x"]
+[ext_resource type="Texture2D" uid="uid://ctinbnc47cgce" path="res://Images/Parcours/accueil_parcours.png" id="10_v8qpl"]
+[ext_resource type="Theme" uid="uid://7o0kntx0sw2k" path="res://Themes/Parcours/boutons.tres" id="12_nhuig"]
+[ext_resource type="Theme" uid="uid://bwipronsmd40d" path="res://Themes/Parcours/enonce.tres" id="13_6mxtj"]
+[ext_resource type="Theme" uid="uid://dv8bk6cfklbq1" path="res://Themes/Parcours/proposition_CheckBox.tres" id="13_7d1tj"]
+[ext_resource type="Theme" uid="uid://bg6em5o6n8isn" path="res://Themes/Parcours/bouton_proposition_niveau3.tres" id="14_tnt36"]
+[ext_resource type="Theme" uid="uid://cjmh2435o0gy7" path="res://Themes/Cours/contenu_cours.tres" id="16_2h6ng"]
+
+[sub_resource type="SystemFont" id="SystemFont_xrtad"]
+font_names = PackedStringArray("Arial")
+
+[sub_resource type="GDScript" id="GDScript_mxx38"]
+script/source = "extends Panel
+
+signal item_dropped_on_target
+@export var target_container: Panel
+@export var draggable_container: GridContainer
+
+func _can_drop_data(at_position: Vector2, data) -> bool:
+	var can_drop: bool = data is Node and data.is_in_group(\"DRAGGABLE\")
+	print(\"[From target_case] can_drop_data has run, returning %s\" % can_drop)
+	return can_drop
+		
+func _drop_data(at_position: Vector2, data) -> void:
+	print(\"[From target_case] drop_data has run\")
+	print(\"[From target_case] Emitting signal: item_dropped_on_target\")
+
+	#var draggable_copy:Draggable = draggable.instantiate()
+	#target_container.add_child(draggable_copy)
+	#draggable_copy.label.text = data.label.text
+	#draggable_copy.id = data.id
+	#draggable_copy.dropped_on_target = true
+	#draggable_copy = data
+		#
+	#print(\"[ID of Item added] %s\"%draggable_copy.id)
+	#print(\"[LABEL of Item added] %s\"%draggable_copy.label.text)
+				
+	# Supprimer l'élément de son emplacement d'origine
+	if data.get_parent() != null:  # Vérifier si l'élément a un parent
+		data.get_parent().remove_child(data)  # Retirer l'élément de son parent
+				
+	item_dropped_on_target.emit()
+
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4cryf"]
+bg_color = Color(0.996078, 0.839216, 0.462745, 1)
+
+[node name="Comparaison" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_the0t")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.996078, 0.839216, 0.462745, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Panel_chemin" type="Panel" parent="ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_fdqal")
+
+[node name="btn_cours" type="Button" parent="ColorRect/MarginContainer/Panel_chemin"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -407.0
+offset_top = 64.0
+offset_right = -332.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.987835)
+theme = ExtResource("2_ghent")
+theme_override_colors/icon_hover_color = Color(0.984314, 0.929412, 0.811765, 1)
+metadata/theme_boutou_niveau_non_decouvert = false
+
+[node name="btn_niveau1" type="Button" parent="ColorRect/MarginContainer/Panel_chemin"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -70.0
+offset_right = -245.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ghent")
+metadata/theme_boutou_niveau_non_decouvert = false
+
+[node name="btn_niveau2" type="Button" parent="ColorRect/MarginContainer/Panel_chemin"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.5
+offset_top = -188.5
+offset_right = -118.5
+offset_bottom = -113.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ghent")
+metadata/theme_boutou_niveau_non_decouvert = false
+
+[node name="btn_niveau3" type="Button" parent="ColorRect/MarginContainer/Panel_chemin"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.5
+offset_top = -209.5
+offset_right = 55.5
+offset_bottom = -134.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.09703)
+theme = ExtResource("2_ghent")
+metadata/theme_boutou_niveau_non_decouvert = false
+
+[node name="btn_niveau4" type="Button" parent="ColorRect/MarginContainer/Panel_chemin"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 127.5
+offset_top = -112.5
+offset_right = 202.5
+offset_bottom = -37.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.09703)
+theme = ExtResource("2_ghent")
+metadata/theme_boutou_niveau_non_decouvert = false
+
+[node name="btn_niveau5" type="Button" parent="ColorRect/MarginContainer/Panel_chemin"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 254.0
+offset_top = -11.0
+offset_right = 329.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.09703)
+theme = ExtResource("2_ghent")
+metadata/theme_boutou_niveau_non_decouvert = false
+
+[node name="Personne_niveau_1" type="TextureRect" parent="ColorRect/MarginContainer/Panel_chemin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -338.0
+offset_top = -248.0
+offset_right = -234.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ad6fw")
+expand_mode = 1
+
+[node name="Personne_niveau_2" type="TextureRect" parent="ColorRect/MarginContainer/Panel_chemin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.0
+offset_top = -292.0
+offset_right = -112.0
+offset_bottom = -181.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_eaj32")
+expand_mode = 1
+
+[node name="Personne_niveau_3" type="TextureRect" parent="ColorRect/MarginContainer/Panel_chemin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -252.0
+offset_right = 76.0
+offset_bottom = -179.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_8bcth")
+expand_mode = 1
+
+[node name="Personne_niveau_4" type="TextureRect" parent="ColorRect/MarginContainer/Panel_chemin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 119.0
+offset_top = -215.0
+offset_right = 218.0
+offset_bottom = -118.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_uerj3")
+expand_mode = 1
+
+[node name="Personne_niveau_5" type="TextureRect" parent="ColorRect/MarginContainer/Panel_chemin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 262.0
+offset_top = -131.0
+offset_right = 354.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_cng4x")
+expand_mode = 1
+
+[node name="Coffre_ferme" type="TextureRect" parent="ColorRect/MarginContainer/Panel_chemin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 248.0
+offset_top = 89.0
+offset_right = 514.0
+offset_bottom = 301.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_yc3o4")
+expand_mode = 1
+
+[node name="Coffre_ouvert" type="TextureRect" parent="ColorRect/MarginContainer/Panel_chemin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 243.0
+offset_top = 68.0
+offset_right = 499.0
+offset_bottom = 290.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_q6gg1")
+expand_mode = 1
+
+[node name="Peronnsage_accueil" type="TextureRect" parent="ColorRect/MarginContainer/Panel_chemin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -536.0
+offset_top = 135.0
+offset_right = -286.0
+offset_bottom = 306.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_v8qpl")
+expand_mode = 1
+
+[node name="Panel_cours" type="Panel" parent="ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_fdqal")
+
+[node name="btn_fin_lecture_cours" type="Button" parent="ColorRect/MarginContainer/Panel_cours"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -351.0
+offset_top = -51.0
+offset_right = -19.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("12_nhuig")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+text = "J e   s u i s   p r ê t   à   p r o g r e s s e r"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_cours"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_xrtad")
+bbcode_enabled = true
+text = "[color=#FF0000][center]L a  c o m p a r a i s o n  :[/center][/color]
+
+[color=#00FF00]P o u r q u o i  l a  f a i r e ?[/color]
+[color=#0000FF]C o m p a r e r  n o u s  a i d e  à  c o m p r e n d r e  l e  m o n d e  a u t o u r  d e  n o u s. C e l a  n o u s  p e r m e t  d e  v o i r  c o m m e n t  l e s  c h o s e s  s o n t   d i f f é r e n t e s  o u   s i m i l a i r e s.[/color]
+
+[color=#FF0000]E x e m p l e :[/color]
+[color=#00FF00]S i   n o u s   c o m p a r o n s   u n e   p o m m e   e t   u n   a b r i c o t ,  n o u s   p o u v o n s   d i r e   q u e   l ' u n e   e s t   j a u n e. Q u e   l a   p o m m e   e s t   p l u s   g r o s s e   q u e  l ' a b r i c o t.[/color]
+
+[color=#0000FF]E n   m a t h é m a t i q u e   c ' e s t   l a   m ê m e   c h o s e. [/color]
+
+[color=#FF0000]98 _________ 92
+1) e s t   pl u s   g r a n d   q u e
+2) e s t   p l u s   p e t i t   q u e
+3) e s t   é g a l   à[/color]
+
+[color=#00FF00]S o l u t i o n :[/color]
+
+[color=#0000FF]R e g a r d o n s   e n s e m b l e ,   l e s   d e u x   n o m b r e s   o n t   l e   m ê m e   n o m b r e   d e   c h i f f r e . [/color]
+[color=#FF0000]R e g a r d o n s   l e   c h i f f r e   d e   g a u c h e, i l s   s o n t   é g a u x   a l o r s   p a s s o n s   a u   c h i f f r e   à   s a   d r o i t e.[/color] [color=#00FF00]I l s   s o n t   d i f f é r e n t s, c o m p a r o n s   m a i n t e n a n t   l e   c h i f f r e.[/color] [color=#00FF00]8   e s t   p l u s   g r a n d   q u e   2.[/color]
+[color=#0000FF]C e l a   s i g n i f i e   q u e   98   e s t   p l u s   g r a n d   q u e   92.[/color]
+
+[color=#FF0000]P o u r q u o i  l a  f a i r e ?[/color]"
+
+[node name="Panel_niveau_1" type="Panel" parent="ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_fdqal")
+
+[node name="Consigne" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_niveau_1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -443.0
+offset_top = -277.0
+offset_right = 426.0
+offset_bottom = -175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][color=#FF0000]L ' o b j e c t i f   e s t   d e   c o c h e r   l a   b o n n e   r é p o n s e   a f i n   q u e   l a  p h r a s e    s o i t   j u s t e. [/color][/center]
+[center][color=#0000FF]E x e m p l e   4   e s t    i n f é r i e u r    à   10[/color][center]"
+
+[node name="Recommencer" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_niveau_1"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -409.0
+offset_top = -167.0
+offset_right = 419.0
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][color=#00FF00]A t t e n t i o n , n o u s   d e v o n s   r e c o m m e n c e r[/color][center]"
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/MarginContainer/Panel_niveau_1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -26.0
+offset_right = 41.5
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+
+[node name="CheckBox_1" type="CheckBox" parent="ColorRect/MarginContainer/Panel_niveau_1/GridContainer"]
+layout_mode = 2
+theme = ExtResource("13_7d1tj")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="Proposition_1" type="Label" parent="ColorRect/MarginContainer/Panel_niveau_1/GridContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Proposition 1"
+
+[node name="CheckBox_2" type="CheckBox" parent="ColorRect/MarginContainer/Panel_niveau_1/GridContainer"]
+layout_mode = 2
+theme = ExtResource("13_7d1tj")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="Proposition_2" type="Label" parent="ColorRect/MarginContainer/Panel_niveau_1/GridContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Proposition 1"
+
+[node name="CheckBox_3" type="CheckBox" parent="ColorRect/MarginContainer/Panel_niveau_1/GridContainer"]
+layout_mode = 2
+theme = ExtResource("13_7d1tj")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="Proposition_3" type="Label" parent="ColorRect/MarginContainer/Panel_niveau_1/GridContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Proposition 1"
+
+[node name="Label_operation" type="Label" parent="ColorRect/MarginContainer/Panel_niveau_1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -119.0
+offset_right = 74.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Opération
+"
+
+[node name="btn_valider" type="Button" parent="ColorRect/MarginContainer/Panel_niveau_1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.339708
+anchor_top = 0.762821
+anchor_right = 0.631953
+anchor_bottom = 0.866987
+offset_left = -43.1909
+offset_right = 46.1567
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("12_nhuig")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+text = "V a l i d e r   m a   r é p o n s e"
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel_niveau_2" type="Panel" parent="ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_fdqal")
+
+[node name="LineEdit_entree_du_resultat" type="LineEdit" parent="ColorRect/MarginContainer/Panel_niveau_2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 229.0
+offset_top = -21.0
+offset_right = 327.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="btn_valider" type="Button" parent="ColorRect/MarginContainer/Panel_niveau_2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = 130.0
+offset_right = 207.0
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("12_nhuig")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+text = "V a l i d e r   m a    r é p o n s e"
+
+[node name="Consigne" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_niveau_2"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 124.0
+grow_horizontal = 2
+theme = ExtResource("13_6mxtj")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][color=#00FF00]D o n n e r   l e   r é s u l t a t   d e   l a   c o m p a r a i s o n   s u i v a n t e :[/color]
+          [color=#FF0000]R é p o n d r e   p a r   \"<\"   o u   \">\"   o u   \"=\"[/color]
+[color=#0000FF]E x e m p l e  : 9 ... 23 = <[/color][/center]"
+
+[node name="Operation" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_niveau_2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -21.0
+offset_right = 170.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("13_6mxtj")
+theme_override_font_sizes/normal_font_size = 32
+text = "operation"
+
+[node name="Explication" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_niveau_2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -459.0
+offset_top = -139.0
+offset_right = 468.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("13_6mxtj")
+theme_override_font_sizes/normal_font_size = 24
+
+[node name="Recommencer" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_niveau_2"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -409.0
+offset_top = -167.0
+offset_right = 419.0
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][color=#00FF00]A t t e n t i o n , n o u s   d e v o n s   r e c o m m e n c e r[/color][center]"
+
+[node name="Panel_niveau_3" type="Panel" parent="ColorRect/MarginContainer"]
+visible = false
+clip_contents = true
+layout_mode = 2
+theme = ExtResource("2_fdqal")
+
+[node name="Panel_depot_reponse" type="Panel" parent="ColorRect/MarginContainer/Panel_niveau_3"]
+visible = false
+layout_mode = 0
+offset_left = 526.0
+offset_top = 101.0
+offset_right = 625.0
+offset_bottom = 145.0
+script = SubResource("GDScript_mxx38")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/Panel_niveau_3"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -563.5
+offset_top = -115.5
+offset_right = 563.5
+offset_bottom = 115.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Chiffre_aleatoire" type="Label" parent="ColorRect/MarginContainer/Panel_niveau_3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "operation"
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="ColorRect/MarginContainer/Panel_niveau_3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 250
+
+[node name="A_completer" type="Label" parent="ColorRect/MarginContainer/Panel_niveau_3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+
+[node name="VSeparator2" type="VSeparator" parent="ColorRect/MarginContainer/Panel_niveau_3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 250
+
+[node name="Resultat" type="Label" parent="ColorRect/MarginContainer/Panel_niveau_3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "resultat"
+horizontal_alignment = 1
+
+[node name="Recommencer" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_niveau_3"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -409.0
+offset_top = -167.0
+offset_right = 419.0
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][color=#00FF00]A t t e n t i o n , n o u s   d e v o n s   r e c o m m e n c e r[/color][center]"
+
+[node name="btn_valider" type="Button" parent="ColorRect/MarginContainer/Panel_niveau_3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -52.0
+offset_right = 219.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+theme = ExtResource("12_nhuig")
+text = "V a l i d e r   m a    r é p o n s e"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/Panel_niveau_3"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 138.0
+offset_right = 3.0
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/Panel_niveau_3/VBoxContainer"]
+layout_mode = 2
+
+[node name="btn_est_plus_grand_que" type="Button" parent="ColorRect/MarginContainer/Panel_niveau_3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("14_tnt36")
+text = "est plus grand que"
+
+[node name="btn_est_plus_petit_que" type="Button" parent="ColorRect/MarginContainer/Panel_niveau_3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("14_tnt36")
+text = "est plus petit que"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/MarginContainer/Panel_niveau_3/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ColorRect/MarginContainer/Panel_niveau_3/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="btn_est_egal_a" type="Button" parent="ColorRect/MarginContainer/Panel_niveau_3/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("14_tnt36")
+text = "est égal à"
+
+[node name="Panel2" type="Panel" parent="ColorRect/MarginContainer/Panel_niveau_3/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_niveau_3"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 68.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][color=#0000FF]L e   b u t   d e   c e t   e x e r c i c e   e s t   d e   c o m p l é t e r   l a   p h r a s e   e n   c o c h a n t   u n e   d e s   t r o i s   c a s e s ,   a f i n   q u e   l a   p h r a s e   s o i t   j u s t e .[/color]
+Exemple : 12 est supérieur à 10[/center]
+"
+fit_content = true
+
+[node name="Panel_niveau_4" type="Panel" parent="ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_fdqal")
+
+[node name="LineEdit_reponse" type="LineEdit" parent="ColorRect/MarginContainer/Panel_niveau_4"]
+layout_mode = 0
+offset_left = 578.0
+offset_top = 181.0
+offset_right = 645.063
+offset_bottom = 212.0
+
+[node name="btn_valider" type="Button" parent="ColorRect/MarginContainer/Panel_niveau_4"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -206.0
+offset_top = -64.0
+offset_right = 206.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("12_nhuig")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+text = "V a l i d e r   m a   r é p o n s e"
+
+[node name="Consigne" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_niveau_4"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 132.0
+grow_horizontal = 2
+theme = ExtResource("13_6mxtj")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][color=#FF0000]E n t r e   u n   n o m b r e   p o u r   q u e   l ' o p é r a t i o n   s o i t   v a l i d e[/color]
+Exemple : 7 < 40[center]"
+
+[node name="Operation" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_niveau_4"]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 172.0
+offset_right = 387.0
+offset_bottom = 226.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "chiffre1"
+
+[node name="Signe" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_niveau_4"]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 180.0
+offset_right = 491.0
+offset_bottom = 220.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "signe"
+
+[node name="Recommencer" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_niveau_4"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -396.0
+offset_top = -198.0
+offset_right = 432.0
+offset_bottom = -153.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][color=#00FF00]A t t e n t i o n , n o u s   d e v o n s   r e c o m m e n c e r[/color][center]"
+
+[node name="Panel_niveau_5" type="Panel" parent="ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_fdqal")
+
+[node name="btn_valider" type="Button" parent="ColorRect/MarginContainer/Panel_niveau_5"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -214.0
+offset_top = -74.0
+offset_right = 214.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("12_nhuig")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+text = "V a l i d e r   m a   r é p o n s e"
+
+[node name="RichTextLabel_consigne" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_niveau_5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -428.0
+offset_top = -249.0
+offset_right = 463.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+
+[node name="Recommencer" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_niveau_5"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -386.0
+offset_top = -114.0
+offset_right = 442.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][color=#00FF00]A t t e n t i o n , n o u s   d e v o n s   r e c o m m e n c e r[/color][center]"
+
+[node name="LineEdit_reponse" type="LineEdit" parent="ColorRect/MarginContainer/Panel_niveau_5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -21.0
+offset_right = 102.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+alignment = 1
+
+[node name="Panel_bravo_niveau_4" type="Panel" parent="ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_fdqal")
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/MarginContainer/Panel_bravo_niveau_4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.996078, 0.839216, 0.462745, 1)
+
+[node name="Button_suivant" type="Button" parent="ColorRect/MarginContainer/Panel_bravo_niveau_4/ColorRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -222.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("12_nhuig")
+text = "S u i v a n t"
+
+[node name="Felicitation" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_bravo_niveau_4/ColorRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 113.0
+grow_horizontal = 2
+theme = ExtResource("16_2h6ng")
+bbcode_enabled = true
+text = "[center]F é l i c i t a t i o n s  !   R é p o n s e    c o r r e c t e ![/center]"
+
+[node name="bout_image_gagne" type="TextureRect" parent="ColorRect/MarginContainer/Panel_bravo_niveau_4/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -252.0
+offset_top = -242.0
+offset_right = 279.0
+offset_bottom = 295.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel_bravo_niveau_1" type="Panel" parent="ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4cryf")
+
+[node name="Button_suivant" type="Button" parent="ColorRect/MarginContainer/Panel_bravo_niveau_1"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -212.0
+offset_top = -59.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("12_nhuig")
+text = "S u i v a n t"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_bravo_niveau_1"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 145.0
+grow_horizontal = 2
+theme = ExtResource("16_2h6ng")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][color=#FF0000]F é l i c i t a t i o n s   ! R é p o n s e   c o r r e c t e  ![/color]
+[color=#00FF00]V o i c i   u n   b o u t   d ' i m a g e[/color][/center]"
+
+[node name="Bout_image_gagne" type="TextureRect" parent="ColorRect/MarginContainer/Panel_bravo_niveau_1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -271.0
+offset_top = -233.0
+offset_right = 297.0
+offset_bottom = 296.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel_bravo_niveau_3" type="Panel" parent="ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_fdqal")
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/Panel_bravo_niveau_3"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 109.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Félicitations ! Réponse correcte !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button_suivant" type="Button" parent="ColorRect/MarginContainer/Panel_bravo_niveau_3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -242.0
+offset_top = -66.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("12_nhuig")
+text = "S u i v a n t"
+
+[node name="bout_image_gagne" type="TextureRect" parent="ColorRect/MarginContainer/Panel_bravo_niveau_3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -192.0
+offset_right = 294.0
+offset_bottom = 305.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel_bravo_niveau_5" type="Panel" parent="ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_fdqal")
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/MarginContainer/Panel_bravo_niveau_5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.996078, 0.839216, 0.462745, 1)
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/Panel_bravo_niveau_5/ColorRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 102.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Félicitations ! Réponse correcte !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button_suivant" type="Button" parent="ColorRect/MarginContainer/Panel_bravo_niveau_5/ColorRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -196.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("12_nhuig")
+text = "S u i v a n t"
+
+[node name="image_complete" type="TextureRect" parent="ColorRect/MarginContainer/Panel_bravo_niveau_5/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -222.0
+offset_top = -225.0
+offset_right = 274.0
+offset_bottom = 299.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel_bravo_niveau_2" type="Panel" parent="ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_fdqal")
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/MarginContainer/Panel_bravo_niveau_2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.996078, 0.839216, 0.462745, 1)
+
+[node name="Button_suivant" type="Button" parent="ColorRect/MarginContainer/Panel_bravo_niveau_2/ColorRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -197.0
+offset_top = -35.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("12_nhuig")
+text = "   S u i v a n t   "
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/MarginContainer/Panel_bravo_niveau_2/ColorRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme = ExtResource("13_6mxtj")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][color=#00FF00]F é l i c i t a t i o n s  !   R é p o n s e   c o r r e c t e  ![/color][/center]"
+
+[node name="bout_image_gagne" type="TextureRect" parent="ColorRect/MarginContainer/Panel_bravo_niveau_2/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.0
+offset_top = -231.0
+offset_right = 259.0
+offset_bottom = 302.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="toggled" from="ColorRect/MarginContainer/Panel_niveau_1/GridContainer/CheckBox_1" to="." method="on_checkbox_clicked" binds= ["CheckBox_1", "CheckBox_1"]]
+[connection signal="toggled" from="ColorRect/MarginContainer/Panel_niveau_1/GridContainer/CheckBox_2" to="." method="on_checkbox_clicked" binds= ["CheckBox_2", "CheckBox_2"]]
+[connection signal="toggled" from="ColorRect/MarginContainer/Panel_niveau_1/GridContainer/CheckBox_3" to="." method="on_checkbox_clicked" binds= ["CheckBox_3", "CheckBox_3"]]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvu12wlvlrgwb"]
+
+[ext_resource type="Script" path="res://Scripts/mesImages.gd" id="1_lw7gq"]
+
+[node name="Images" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lw7gq")
+
+[node name="Fond" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.996078, 0.898039, 0.576471, 1)
+
+[node name="Marges" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ConteneurImage" type="VBoxContainer" parent="Marges"]
+layout_mode = 2

@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://ba7qswmrvycp0"]
+
+[ext_resource type="PackedScene" uid="uid://ck1yolfpn28yl" path="res://Scenes/view_chemin.tscn" id="1_epf14"]
+[ext_resource type="Script" path="res://Scripts/ParcoursEntier.gd" id="1_pencp"]
+[ext_resource type="Theme" uid="uid://7o0kntx0sw2k" path="res://Themes/Parcours/boutons.tres" id="3_rh7me"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2pb8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="ParcoursEntier" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pencp")
+
+[node name="Fond" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.996078, 0.839216, 0.462745, 1)
+
+[node name="Marges" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Marges"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Marges/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="view_chemin" parent="Marges/VBoxContainer/PanelContainer" instance=ExtResource("1_epf14")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Marges/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="EspaceVide" type="Panel" parent="Marges/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.8
+theme_override_styles/panel = SubResource("StyleBoxFlat_g2pb8")
+
+[node name="btnSuivant" type="Button" parent="Marges/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_rh7me")
+text = "S u i v a n t"

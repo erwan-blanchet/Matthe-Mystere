@@ -1,0 +1,263 @@
+[gd_scene load_steps=14 format=3 uid="uid://cinng3bhwouwl"]
+
+[ext_resource type="Script" path="res://Scripts/view_addition_level_5.gd" id="1_6m3wh"]
+[ext_resource type="Theme" uid="uid://7o0kntx0sw2k" path="res://Themes/Parcours/boutons.tres" id="2_3wimf"]
+[ext_resource type="Texture2D" uid="uid://kqv0e8qure1b" path="res://Images/image_reponse5/image_win.jpg" id="2_l06ql"]
+[ext_resource type="Texture2D" uid="uid://bould2hdlf0i1" path="res://Images/Parcours/coffre_ouvert.png" id="3_st0yd"]
+[ext_resource type="Texture2D" uid="uid://c1fs3gp3v0bbf" path="res://Images/parcours_addition/Coffre_ferme.png" id="4_sxwlp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d35b2"]
+bg_color = Color(0.560784, 0.560784, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08y0p"]
+bg_color = Color(0.560784, 0.560784, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cuoc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbop0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcg7k"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iut3o"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2np61"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_3getj"]
+Button/styles/disabled = SubResource("StyleBoxFlat_6cuoc")
+Button/styles/focus = SubResource("StyleBoxFlat_wbop0")
+Button/styles/hover = SubResource("StyleBoxFlat_jcg7k")
+Button/styles/normal = SubResource("StyleBoxFlat_iut3o")
+Button/styles/pressed = SubResource("StyleBoxFlat_2np61")
+
+[node name="view_addition_level_5" type="Control" node_paths=PackedStringArray("text_probleme", "textEdit_answer", "btn_valider", "lbl_message", "btn_recup_image", "btn_retour_chemin", "view_image_finale", "view_addition_level5", "coffre_ferme", "coffre_ouvert", "image_finale", "btn_hidden", "label_message2")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6m3wh")
+text_probleme = NodePath("Panel/RichTextLabel_probleme")
+textEdit_answer = NodePath("Panel/TextEdit_answer")
+btn_valider = NodePath("Panel/btn_valider")
+lbl_message = NodePath("Panel/Label_message")
+btn_recup_image = NodePath("Panel/btn_recup_image")
+btn_retour_chemin = NodePath("Panel_image/btn_retour_chemin")
+view_image_finale = NodePath("Panel_image")
+view_addition_level5 = NodePath("Panel")
+coffre_ferme = NodePath("Panel_image/coffre_ferme")
+coffre_ouvert = NodePath("Panel_image/coffre_ouvert")
+image_finale = NodePath("Panel_image/TextureRect_image")
+btn_hidden = NodePath("Panel_image/btn_hidden")
+label_message2 = NodePath("Panel_image/Label_message2")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d35b2")
+
+[node name="Label_message" type="Label" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.5
+offset_top = 100.0
+offset_right = 113.5
+offset_bottom = 123.0
+grow_horizontal = 2
+text = "ICI S'AFFICHERA UN MESSAGE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel_probleme" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -96.0
+offset_right = 256.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "ICI S'AFFICHERA LE PROBLEME A RÉSOUDRE PAR l'UTILISATEUR"
+scroll_following = true
+
+[node name="TextEdit_answer" type="TextEdit" parent="Panel"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 76.0
+offset_right = 64.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "			  ?"
+
+[node name="btn_valider" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -164.0
+offset_top = -74.0
+offset_right = -34.0
+offset_bottom = -21.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_3wimf")
+text = "Valider"
+
+[node name="btn_recup_image" type="Button" parent="Panel"]
+visible = false
+custom_minimum_size = Vector2(120, 31)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -540.0
+offset_top = -78.0
+offset_right = -199.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_3wimf")
+text = "Récupérer mon image"
+
+[node name="Panel_image" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_08y0p")
+
+[node name="TextureRect_image" type="TextureRect" parent="Panel_image"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_l06ql")
+
+[node name="Label_message" type="Label" parent="Panel_image"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -182.0
+offset_right = 20.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Féliciation ! Tu es devenue un professionnel des additions !"
+
+[node name="Label_message2" type="Label" parent="Panel_image"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.5
+offset_top = -132.0
+offset_right = 202.5
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Appuis sur le coffre pour découvrir l'image complète"
+
+[node name="btn_retour_chemin" type="Button" parent="Panel_image"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -153.0
+offset_top = -40.0
+offset_right = -7.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_3wimf")
+text = "Retour au chemin"
+
+[node name="coffre_ouvert" type="TextureRect" parent="Panel_image"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+offset_left = 200.0
+offset_top = 392.0
+offset_right = 400.0
+offset_bottom = 592.0
+texture = ExtResource("3_st0yd")
+expand_mode = 2
+
+[node name="coffre_ferme" type="TextureRect" parent="Panel_image"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_sxwlp")
+expand_mode = 2
+
+[node name="btn_hidden" type="Button" parent="Panel_image"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -32.0
+offset_right = 63.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3getj")

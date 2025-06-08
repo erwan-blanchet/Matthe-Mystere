@@ -1,0 +1,225 @@
+[gd_scene load_steps=7 format=3 uid="uid://cm8q41lbxu0e3"]
+
+[ext_resource type="Script" path="res://Scripts/view_addition_level_3.gd" id="1_h4r3w"]
+[ext_resource type="Script" path="res://Scripts/Panel_target.gd" id="2_3pt17"]
+[ext_resource type="Texture2D" uid="uid://caoywa2opwmp4" path="res://Images/image_reponse3/im3.png" id="3_76ey2"]
+[ext_resource type="Theme" uid="uid://7o0kntx0sw2k" path="res://Themes/Parcours/boutons.tres" id="3_cjm2c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cl27u"]
+bg_color = Color(0.560784, 0.560784, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vv1mm"]
+bg_color = Color(0.560784, 0.560784, 0, 1)
+
+[node name="view_addition_level_3" type="Control" node_paths=PackedStringArray("label_firstNumber", "label_resultat", "panel_target", "lbl_message", "btn_recup_image", "view_addition_level_3", "view_image", "btn_suivant")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h4r3w")
+label_firstNumber = NodePath("Panel_principal/HBoxContainer_target/Label_firstNumber")
+label_resultat = NodePath("Panel_principal/HBoxContainer_target/Label_resultat")
+panel_target = NodePath("Panel_principal/HBoxContainer_target/Panel_target")
+lbl_message = NodePath("Panel_principal/Label_message")
+btn_recup_image = NodePath("Panel_principal/btn_recup_image")
+view_addition_level_3 = NodePath("Panel_principal")
+view_image = NodePath("Panel_image")
+btn_suivant = NodePath("Panel_image/btn_suivant")
+
+[node name="Panel_principal" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cl27u")
+
+[node name="Label_message" type="Label" parent="Panel_principal"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -117.0
+offset_top = 61.0
+offset_right = 110.0
+offset_bottom = 84.0
+grow_horizontal = 2
+text = "ICI S'AFFICHERA UN MESSAGE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer_target" type="HBoxContainer" parent="Panel_principal"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -485.0
+offset_top = -92.0
+offset_right = 483.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Label_firstNumber" type="Label" parent="Panel_principal/HBoxContainer_target"]
+layout_mode = 2
+text = "REPONSE1"
+
+[node name="Label_operator" type="Label" parent="Panel_principal/HBoxContainer_target"]
+layout_mode = 2
+text = "+"
+
+[node name="Panel_target" type="Panel" parent="Panel_principal/HBoxContainer_target" node_paths=PackedStringArray("target_container", "draggable_container")]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+script = ExtResource("2_3pt17")
+target_container = NodePath(".")
+draggable_container = NodePath("../../HBoxContainer_source/source_item_dragable")
+
+[node name="Label_operator2" type="Label" parent="Panel_principal/HBoxContainer_target"]
+layout_mode = 2
+text = "="
+
+[node name="Label_resultat" type="Label" parent="Panel_principal/HBoxContainer_target"]
+layout_mode = 2
+text = "RESULTAT"
+
+[node name="HBoxContainer_source" type="HBoxContainer" parent="Panel_principal"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -484.0
+offset_top = -11.0
+offset_right = 484.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="source_item_dragable" type="GridContainer" parent="Panel_principal/HBoxContainer_source"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/h_separation = 71
+theme_override_constants/v_separation = 50
+columns = 3
+
+[node name="Panel1" type="Panel" parent="Panel_principal/HBoxContainer_source/source_item_dragable"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="Panel_principal/HBoxContainer_source/source_item_dragable"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+
+[node name="Panel3" type="Panel" parent="Panel_principal/HBoxContainer_source/source_item_dragable"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+
+[node name="Panel4" type="Panel" parent="Panel_principal/HBoxContainer_source/source_item_dragable"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+
+[node name="Panel5" type="Panel" parent="Panel_principal/HBoxContainer_source/source_item_dragable"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+
+[node name="Panel6" type="Panel" parent="Panel_principal/HBoxContainer_source/source_item_dragable"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+
+[node name="btn_recup_image" type="Button" parent="Panel_principal"]
+visible = false
+custom_minimum_size = Vector2(120, 31)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = -60.0
+offset_right = 334.0
+offset_bottom = -25.0
+grow_vertical = 0
+theme = ExtResource("3_cjm2c")
+text = "Récupérer mon image"
+
+[node name="Panel_image" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vv1mm")
+
+[node name="Label_message" type="Label" parent="Panel_image"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.5
+offset_top = -182.0
+offset_right = 148.5
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Féliciation ! Votre réponse est correcte"
+
+[node name="TextureRect" type="TextureRect" parent="Panel_image"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_76ey2")
+
+[node name="btn_suivant" type="Button" parent="Panel_image"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = -48.0
+offset_right = -9.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_cjm2c")
+text = "Suivant"
+
+[node name="Timer_false_answer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Timer_show_message" type="Timer" parent="."]
+one_shot = true
+
+[node name="Timer_show_boutton" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer_false_answer" to="." method="_on_timer_false_answer_timeout"]
+[connection signal="timeout" from="Timer_show_message" to="." method="_on_timer_show_message_timeout"]
+[connection signal="timeout" from="Timer_show_boutton" to="." method="_on_timer_show_boutton_timeout"]

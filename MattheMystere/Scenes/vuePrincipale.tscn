@@ -1,0 +1,154 @@
+[gd_scene load_steps=7 format=3 uid="uid://doa2fii8sp04e"]
+
+[ext_resource type="Script" path="res://Scripts/vuePrincipale.gd" id="1_0rsn6"]
+[ext_resource type="Texture2D" uid="uid://4dbtf3hrhaie" path="res://Images/logo.png" id="1_uaso4"]
+[ext_resource type="Theme" uid="uid://br8ppt0ry1mnx" path="res://Themes/btn_quitter.tres" id="2_g5tqc"]
+[ext_resource type="Theme" uid="uid://tddudghnibye" path="res://Themes/boutons_menu.tres" id="3_r0csv"]
+[ext_resource type="PackedScene" uid="uid://8t4so64vxmwg" path="res://Scenes/sceneAccueil.tscn" id="5_xe00x"]
+
+[sub_resource type="SystemFont" id="SystemFont_pcs36"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[node name="VuePrincipale" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0rsn6")
+
+[node name="Fond" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.694118, 0.866667, 0.941176, 1)
+
+[node name="Marge" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Marge"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Bandeau" type="HBoxContainer" parent="Marge/VBoxContainer"]
+layout_mode = 2
+
+[node name="Logo" type="TextureRect" parent="Marge/VBoxContainer/Bandeau"]
+layout_mode = 2
+texture = ExtResource("1_uaso4")
+expand_mode = 2
+
+[node name="Slogan" type="Label" parent="Marge/VBoxContainer/Bandeau"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_pcs36")
+theme_override_font_sizes/font_size = 32
+text = "Quand les mathématiques deviennent sympathiques "
+
+[node name="btnQuitter" type="Button" parent="Marge/VBoxContainer/Bandeau"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = ExtResource("2_g5tqc")
+text = "Quitter"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Marge/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Menu" type="HBoxContainer" parent="Marge/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="Liste" type="VBoxContainer" parent="Marge/VBoxContainer/HBoxContainer/Menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="btnAventureEntiere" type="Button" parent="Marge/VBoxContainer/HBoxContainer/Menu/Liste"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_r0csv")
+text = "L'aventure en 
+entier !"
+
+[node name="btnAventureChoisit" type="Button" parent="Marge/VBoxContainer/HBoxContainer/Menu/Liste"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_r0csv")
+text = "Je choisis 
+mon aventure !"
+
+[node name="btnCours" type="Button" parent="Marge/VBoxContainer/HBoxContainer/Menu/Liste"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_r0csv")
+text = "Cours "
+
+[node name="btnImages" type="Button" parent="Marge/VBoxContainer/HBoxContainer/Menu/Liste"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_r0csv")
+text = "Mes images"
+
+[node name="btnPersonnaliser" type="Button" parent="Marge/VBoxContainer/HBoxContainer/Menu/Liste"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_r0csv")
+text = "Personnaliser"
+
+[node name="Menu2" type="HBoxContainer" parent="Marge/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="Liste" type="VBoxContainer" parent="Marge/VBoxContainer/HBoxContainer/Menu2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="btnRetour" type="Button" parent="Marge/VBoxContainer/HBoxContainer/Menu2/Liste"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_r0csv")
+theme_override_font_sizes/font_size = 20
+text = "< RETOUR"
+
+[node name="btnAddition" type="Button" parent="Marge/VBoxContainer/HBoxContainer/Menu2/Liste"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_r0csv")
+text = "Additions"
+
+[node name="btnSoustraction" type="Button" parent="Marge/VBoxContainer/HBoxContainer/Menu2/Liste"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_r0csv")
+text = "Soustractions"
+
+[node name="btnComparaison" type="Button" parent="Marge/VBoxContainer/HBoxContainer/Menu2/Liste"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_r0csv")
+text = "Comparaisons"
+
+[node name="Panel" type="PanelContainer" parent="Marge/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SceneAccueil" parent="Marge/VBoxContainer/HBoxContainer/Panel" instance=ExtResource("5_xe00x")]
+layout_mode = 2

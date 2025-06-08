@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://8t4so64vxmwg"]
+
+[ext_resource type="SystemFont" uid="uid://d1khr5p4wim2t" path="res://Themes/police_d_ecriture.tres" id="1_sge16"]
+
+[sub_resource type="SystemFont" id="SystemFont_s6vm6"]
+font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_pbo76"]
+font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_sowin"]
+font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_7donw"]
+font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_tye4s"]
+font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
+
+[node name="SceneAccueil" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="fond" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.996078, 0.839216, 0.462745, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="titre" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_s6vm6")
+theme_override_fonts/bold_font = SubResource("SystemFont_pbo76")
+theme_override_fonts/italics_font = SubResource("SystemFont_sowin")
+theme_override_fonts/bold_italics_font = SubResource("SystemFont_7donw")
+theme_override_fonts/mono_font = SubResource("SystemFont_tye4s")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/mono_font_size = 40
+bbcode_enabled = true
+text = "[center]B i e n v e n u  d a n s  l ' a v e n t u r e  M a t t  h é - M y s t è r e  o ù  l e s  m a t h é m a t  i q u e  s  d e v i e n n e n t   s y m p a t h i q u e s  ![/center]"
+
+[node name="conseille" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_sge16")
+theme_override_fonts/bold_font = ExtResource("1_sge16")
+theme_override_fonts/italics_font = ExtResource("1_sge16")
+theme_override_fonts/bold_italics_font = ExtResource("1_sge16")
+theme_override_fonts/mono_font = ExtResource("1_sge16")
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/mono_font_size = 30
+bbcode_enabled = true
+text = "[color=#0E00FF]P o u r  l e s  p l u s  c o u r a g e u x  d ' e n t r e  v o u s ,  n o u s  v o u s  p r o p o s o n s  u n e  i m m e r s i o n  t o t a l e  d a n s  u n e  a v e n t u r e  é p i q u e  a v e c  n o t r e  p a r c o ur s  c o m p l e t  ! [/color] 
+
+[color=#137500]S i  v o u s  ê t e s  p r e s s é s ,  p a s  d e  s o u c i  ! [/color] [color=#FF0000] E x p l o r e z  n o s  a v e n t u r e s  c i b l é e s  e n  c h o i s i s s a n t  c e l l e  q u i  v o u s  t e n t e   l e  p l u s .[/color] 
+
+[color=#0E00FF]E t  s i  v o u s  d é s i r e z  e xp l o r  e r  v o t re  e n v ir o n n e m e n t ,  p l o n g e z  d a n s  n o s  l e ç o n s   p o u r  e n r i c h i r  v o t r e  c o f f r e  d e  c o n n a i s s a n c e s .[/color] 
+
+[color=#137500]E n v i e  d e  p e r s o n n a l i s e r  v o t r e   e  x p é r i  e n c e  ? [/color] [color=#FF0000] P a s  d e  p r o b l è m e  ! [/color][color=#0E00FF] E x p l o re  z  n o t r e  r u b r i q u e  d e  p e r s o n n a l i s a t i o n   p o u r  a d a p t e r  l ' a p p a r e n c e  à  v o t r e  g o û t .[/color] 
+
+[color=#137500]N o u s  v o u s  s o u h a i t o n s  à  t o u s  u n e  i n c r o y a b l e  a v e n t u r e  ![/color] "
